@@ -4,6 +4,7 @@ import json
 import re
 from collections import deque
 
+from .agent_library import library
 from .workflow import SingleAssistant
 
 
@@ -45,8 +46,9 @@ FACTOR_IDEA_REQUEST = re.compile(
     re.I,
 )
 FACTOR_IDEA_BACKTEST_FOLLOWUP = re.compile(
-    r"(?:回测|验证|测试|backtest|validate|test).{0,12}(?:刚才|上面|这个|该|此|它).{0,8}(?:因子|策略|规则|idea|rule)|"
-    r"(?:刚才|上面|这个|该|此|它).{0,8}(?:因子|策略|规则|idea|rule).{0,12}(?:回测|验证|测试|backtest|validate|test)",
+    r"(?:回测|验证|测试|计算|重算|重跑|backtest|validate|test|recalculate).{0,12}(?:刚才|上面|这个|该|此|它|同一|原来).{0,8}(?:因子|策略|规则|idea|rule)|"
+    r"(?:刚才|上面|这个|该|此|它|同一|原来).{0,8}(?:因子|策略|规则|idea|rule).{0,12}(?:回测|验证|测试|计算|重算|重跑|backtest|validate|test|recalculate)|"
+    r"(?:换成|改成|继续).{0,40}(?:刚才|上面|同一|原来).{0,8}(?:因子|策略|规则)",
     re.I,
 )
 FOLLOW_UP = re.compile(r"^(?:那|再|也|换成|改成|继续|刚才|上面|另外|还有|what about\b|and\b)", re.I)
@@ -85,6 +87,32 @@ def route_research(question, previous_roles=()):
 def finished_reply(message):
     content = message.get("content")
     return isinstance(content, str) and bool(TERMINATOR.search(content))
+
+
+def scoped_specialist(role, question):
+    """Give each specialist only the tools needed for its part of a shared question."""
+    config = dict(library[role])
+    scope = SCOPES[role]
+    if role == "A_Share_Factor_Researcher" and not BACKTEST_REQUEST.search(question):
+        config["toolkits"] = [tool for tool in config["toolkits"] if tool.__name__ == "get_a_share_factors"]
+        scope = "只计算用户要求的价量因子；不运行任何策略，不提供人工 SMA 或固定 V2 指标"
+    if role == "Quant_Analyst" and re.search(r"V2|固定(?:实验|数据|快照)", question, re.I):
+        allowed = {"get_data_summary", "read_backtest_result"}
+        rerun = bool(re.search(r"重跑|重新运行|重新计算|重算|rerun|recompute", question, re.I))
+        if rerun:
+            allowed.add("backtest_reference")
+        config["toolkits"] = [tool for tool in config["toolkits"]
+                              if tool.__name__ in allowed]
+        scope = ("只处理原 V2 固定样本的配置与 SMA/买入持有结果；按要求读取已有记录"
+                 + ("或重跑传统基准" if rerun else "，不重跑策略")
+                 + "；不新建实验，不处理其他分项的股票或截止日")
+    config["profile"] += (
+        f"\n本轮是多角色任务，你只负责：{scope}。"
+        "用户的最终完整输出格式由汇总角色负责；你只返回本分项有工具依据的证据，"
+        "不要复制完整模板、填其他分项字段或猜测其他角色的数值。"
+        "不同分项可有各自股票和日期，不要用另一个分项的日期覆盖当前分项。"
+    )
+    return config
 
 
 SYNTHESIZER = {
@@ -172,7 +200,7 @@ class AutoResearch:
                     "无法取数或超出工具能力时明确说明。输出供汇总的简明证据，不回答其他分项。\n"
                     f"{context}"
                 )
-                results[role] = self._reply(role, prompt)
+                results[role] = self._reply(scoped_specialist(role, question), prompt)
 
             summary = {}
             if any("answer" in result for result in results.values()):

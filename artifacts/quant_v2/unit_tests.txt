@@ -1,8 +1,12 @@
 [AkShareUtils] 东方财富行情获取失败（test provider fallback），回退到腾讯行情。
-{"ok": false, "design": "fixture", "limits": "fixture", "model": "deepseek-flash", "repeats_per_case": 3, "cases": 1, "attempts": 3, "passed": 1, "pass_rate": 0.3333, "json_valid_rate": 0.3333, "rule_consistency_rate": 0.3333, "prefix_causality_rate": 0.3333, "trusted_engine_equality_rate": 0.3333, "rate_denominator": "all planned attempts, including failed and missing attempts", "conditional_check_rates": {"rule_consistency_rate": 1.0, "prefix_causality_rate": 1.0, "trusted_engine_equality_rate": 1.0}, "failure_taxonomy": {"json_decode_or_schema": 1, "missing_attempt": 1}, "latency_seconds": {"count": 1, "mean": 2.0, "median": 2.0, "min": 2.0, "max": 2.0}, "scope": "Bounded generation-stability check across three fixed cases; not evidence of investment alpha.", "evaluation_time": "2026-11-19T09:42:13.245840+00:00"}
-Results: C:/Users/ohh/AppData/Local/Temp/tmpcunfdi3q/fixture_stability_af1b454892ef
-{"ok": false, "design": "fixture", "limits": "fixture", "model": "deepseek-flash", "repeats_per_case": 3, "cases": 1, "attempts": 3, "passed": 0, "pass_rate": 0.0, "json_valid_rate": 0.0, "rule_consistency_rate": 0.0, "prefix_causality_rate": 0.0, "trusted_engine_equality_rate": 0.0, "rate_denominator": "all planned attempts, including failed and missing attempts", "conditional_check_rates": {"rule_consistency_rate": null, "prefix_causality_rate": null, "trusted_engine_equality_rate": null}, "failure_taxonomy": {"missing_attempt": 3}, "latency_seconds": {"count": 0, "mean": null, "median": null, "min": null, "max": null}, "scope": "Bounded generation-stability check across three fixed cases; not evidence of investment alpha.", "evaluation_time": "2026-11-19T09:42:13.260313+00:00"}
-Results: C:/Users/ohh/AppData/Local/Temp/tmpqyz7vbzv/fixture_stability_af1b454892ef
+{"ok": false, "design": "fixture", "limits": "fixture", "model": "deepseek-flash", "repeats_per_case": 3, "cases": 1, "attempts": 3, "passed": 1, "pass_rate": 0.3333, "json_valid_rate": 0.3333, "rule_consistency_rate": 0.3333, "prefix_causality_rate": 0.3333, "trusted_engine_equality_rate": 0.3333, "rate_denominator": "all planned attempts, including failed and missing attempts", "conditional_check_rates": {"rule_consistency_rate": 1.0, "prefix_causality_rate": 1.0, "trusted_engine_equality_rate": 1.0}, "failure_taxonomy": {"json_decode_or_schema": 1, "missing_attempt": 1}, "latency_seconds": {"count": 1, "mean": 2.0, "median": 2.0, "min": 2.0, "max": 2.0}, "scope": "Bounded generation-stability check across three fixed cases; not evidence of investment alpha.", "evaluation_time": "2026-11-19T10:46:56.942868+00:00"}
+Results: C:/Users/ohh/AppData/Local/Temp/tmpegacgils/fixture_stability_af1b454892ef
+{"ok": false, "design": "fixture", "limits": "fixture", "model": "deepseek-flash", "repeats_per_case": 3, "cases": 1, "attempts": 3, "passed": 0, "pass_rate": 0.0, "json_valid_rate": 0.0, "rule_consistency_rate": 0.0, "prefix_causality_rate": 0.0, "trusted_engine_equality_rate": 0.0, "rate_denominator": "all planned attempts, including failed and missing attempts", "conditional_check_rates": {"rule_consistency_rate": null, "prefix_causality_rate": null, "trusted_engine_equality_rate": null}, "failure_taxonomy": {"missing_attempt": 3}, "latency_seconds": {"count": 0, "mean": null, "median": null, "min": null, "max": null}, "scope": "Bounded generation-stability check across three fixed cases; not evidence of investment alpha.", "evaluation_time": "2026-11-19T10:46:56.958174+00:00"}
+Results: C:/Users/ohh/AppData/Local/Temp/tmphc6q2h3p/fixture_stability_af1b454892ef
+test_json_final_answer_with_code_fence (test_auto_validation.AutoValidationTests.test_json_final_answer_with_code_fence) ... ok
+test_rule_order_and_numeric_threshold_type_do_not_change_logic (test_auto_validation.AutoValidationTests.test_rule_order_and_numeric_threshold_type_do_not_change_logic) ... ok
+test_tool_calls_accept_empty_final_message_fields (test_auto_validation.AutoValidationTests.test_tool_calls_accept_empty_final_message_fields) ... ok
+test_wrong_scale_nan_and_missing_value_fail (test_auto_validation.AutoValidationTests.test_wrong_scale_nan_and_missing_value_fail) ... ok
 test_default_console_only_shows_analysis (test_console_output.ConsoleTests.test_default_console_only_shows_analysis) ... ok
 test_do_not_repeat_user_question_or_old_answer (test_console_output.ConsoleTests.test_do_not_repeat_user_question_or_old_answer) ... ok
 test_explicit_json_answer_preserved (test_console_output.ConsoleTests.test_explicit_json_answer_preserved) ... ok
@@ -77,6 +81,7 @@ test_warmup_excluded_from_performance_and_trades (test_quant_v2.QuantTests.test_
 test_window_has_only_past_context (test_quant_v2.QuantTests.test_window_has_only_past_context) ... ok
 test_window_rejects_insufficient_warmup (test_quant_v2.QuantTests.test_window_rejects_insufficient_warmup) ... ok
 test_default_auto_output_is_quiet_and_records_the_turn (test_research_router.AutomaticConsoleTests.test_default_auto_output_is_quiet_and_records_the_turn) ... ok
+test_factor_and_fixed_snapshot_tools_are_scoped_without_mutating_roles (test_research_router.AutomaticReplyTests.test_factor_and_fixed_snapshot_tools_are_scoped_without_mutating_roles) ... ok
 test_incomplete_tool_reply_is_not_an_answer (test_research_router.AutomaticReplyTests.test_incomplete_tool_reply_is_not_an_answer) ... ok
 test_named_assistant_final_reply_is_accepted (test_research_router.AutomaticReplyTests.test_named_assistant_final_reply_is_accepted) ... ok
 test_one_failed_role_does_not_hide_other_evidence (test_research_router.AutomaticReplyTests.test_one_failed_role_does_not_hide_other_evidence) ... ok
@@ -87,6 +92,7 @@ test_financial_and_news_intents_can_combine (test_research_router.RoutingTests.t
 test_fixed_momentum_uses_factor_researcher (test_research_router.RoutingTests.test_fixed_momentum_uses_factor_researcher) ... ok
 test_parameterized_sma_uses_quant_role (test_research_router.RoutingTests.test_parameterized_sma_uses_quant_role) ... ok
 test_readme_custom_rule_uses_rule_tool_role (test_research_router.RoutingTests.test_readme_custom_rule_uses_rule_tool_role) ... ok
+test_switch_symbol_keeps_rule_despite_numeric_format_keywords (test_research_router.RoutingTests.test_switch_symbol_keeps_rule_despite_numeric_format_keywords) ... ok
 test_excessive_nesting_is_rejected (test_rule_backtest.RuleBacktestTests.test_excessive_nesting_is_rejected) ... ok
 test_invalid_json_never_fetches_data (test_rule_backtest.RuleBacktestTests.test_invalid_json_never_fetches_data) ... ok
 test_invalid_windows_fields_and_execution_are_rejected (test_rule_backtest.RuleBacktestTests.test_invalid_windows_fields_and_execution_are_rejected) ... ok
@@ -101,6 +107,6 @@ test_prepare_case_rejects_changed_config (test_stability.StabilityTests.test_pre
 test_rate_and_latency (test_stability.StabilityTests.test_rate_and_latency) ... ok
 
 ----------------------------------------------------------------------
-Ran 96 tests in 2.611s
+Ran 102 tests in 2.789s
 
 OK
