@@ -6,6 +6,7 @@ Context is a bounded projection of this store, not a source of current prices.
 """
 
 import contextlib
+import hashlib
 from datetime import datetime, timezone
 import json
 import math
@@ -51,6 +52,98 @@ def _limit(value):
     if type(value) is not int or not 1 <= value <= 100:
         raise ValueError("limit must be an integer between 1 and 100")
     return value
+
+
+def _extract_rules(question, answer, chats):
+    """Keep validated JSON rules separately from text previews and numeric evidence."""
+    found = {}
+
+    def collect(value, source):
+        pending = [value]
+        for _ in range(128):
+            if not pending:
+                break
+            item = pending.pop()
+            if isinstance(item, str) and len(item) <= 16000:
+                try:
+                    pending.append(json.loads(item))
+                except (ValueError, RecursionError):
+                    pass
+            elif isinstance(item, dict):
+                if "signal" in item:
+                    try:
+                        from ..functional.momentum_backtest import validate_strategy_rule
+                        rule = validate_strategy_rule(item)
+                        encoded = _json(rule)
+                        if len(encoded) <= 16000:
+                            digest = hashlib.sha256(json.dumps(rule, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()
+                            found[digest] = {"rule": rule, "source": source, "rule_sha256": digest}
+                    except (ValueError, TypeError, RecursionError, OverflowError):
+                        pass
+                else:
+                    keys = sorted(item, key=lambda key: key in {"rule", "rule_json"})
+                    pending.extend(item[key] for key in keys if not _SECRET_FIELD.search(str(key))
+                                   and (isinstance(item[key], (dict, list)) or key in {"rule", "rule_json"}))
+            elif isinstance(item, list):
+                pending.extend(reversed(item[:128]))
+
+    decoder = json.JSONDecoder()
+    for text, source in ((question, "user_question"), (answer, "assistant_answer")):
+        # Scan both ends of unusually long text; never evaluate its contents.
+        text = text if len(text) <= 65536 else text[:32768] + "\n" + text[-32768:]
+        position = 0
+        for _ in range(128):
+            start = text.find("{", position)
+            if start < 0:
+                break
+            try:
+                value, consumed = decoder.raw_decode(text[start:])
+                collect(value, source)
+                position = start + consumed
+            except (ValueError, RecursionError):
+                position = start + 1
+    for chat in chats:
+        for message in chat.get("history", []):
+            for call in message.get("tool_calls") or []:
+                collect(call.get("function", {}).get("arguments", ""), "tool_argument")
+            if message.get("role") in {"tool", "function"}:
+                for response in message.get("tool_responses") or [message]:
+                    collect(response.get("content"), "tool_result")
+    return list(found.values())
+
+
+def summarize_turn(original, budget):
+    """Prefer whole rules, then evidence references, then short text previews."""
+    row = {key: value for key, value in original.items() if key not in {"question", "answer", "evidence", "rules"}}
+    row.update(question="", answer="", evidence=[], rules=[])
+    if len(_json(row)) > budget - 100:
+        return None
+    rules = original.get("rules", [])
+    for rule in reversed(rules):
+        if len(_json({**row, "rules": [rule, *row["rules"]]})) <= budget - 100:
+            row["rules"].insert(0, rule)
+    if len(row["rules"]) != len(rules):
+        row.update(rules_omitted=len(rules) - len(row["rules"]), truncated=True)
+    available = max(2, budget - len(_json(row)) - 1800)
+    row["evidence"] = _bounded_evidence(original["evidence"], available)
+    if not row["evidence"] and original["evidence"]:
+        row["evidence"] = _bounded_evidence([_references(value) for value in original["evidence"]],
+                                            max(2, budget - len(_json(row)) - 200))
+    if row["evidence"] != original["evidence"]:
+        row["truncated"] = True
+    for key, maximum in (("question", 500), ("answer", 1000)):
+        text = original[key]
+        if rules and "{" in text:
+            text = text[:text.index("{")] + "（完整 JSON 规则见 rules 字段；原文可用 /recall 查看。）"
+        row[key] = text[:maximum]
+        if len(text) > maximum or text != original[key]:
+            row[key] += "…"
+            row["truncated"] = True
+    for key in ("answer", "question"):
+        while len(_json(row)) > budget and row[key]:
+            row[key] = row[key][:-250]
+            row["truncated"] = True
+    return row if len(_json(row)) <= budget else None
 
 
 def _is_path(key):
@@ -164,10 +257,12 @@ def _terms(query):
 
 
 def _turn(row):
+    rules = json.loads(row["rules"]) if "rules" in row.keys() else []
     return {"id": row["id"], "session_id": row["session_id"],
             "question": row["question"], "answer": row["answer"],
             "roles": json.loads(row["roles"]), "status": row["status"],
-            "created_at": row["created_at"], "evidence": json.loads(row["evidence"])}
+            "created_at": row["created_at"], "evidence": json.loads(row["evidence"]),
+            "rules": rules or _extract_rules(row["question"], row["answer"], [])}
 
 
 class ResearchMemory:
@@ -187,6 +282,8 @@ class ResearchMemory:
             db.execute("PRAGMA journal_mode=WAL")
             db.execute("CREATE TABLE IF NOT EXISTS sessions (id TEXT PRIMARY KEY, mode TEXT NOT NULL, role TEXT, created_at TEXT NOT NULL, updated_at TEXT NOT NULL, title TEXT NOT NULL DEFAULT '')")
             db.execute("CREATE TABLE IF NOT EXISTS turns (id INTEGER PRIMARY KEY AUTOINCREMENT, session_id TEXT NOT NULL REFERENCES sessions(id), question TEXT NOT NULL, answer TEXT NOT NULL, roles TEXT NOT NULL, status TEXT NOT NULL CHECK(status IN ('completed', 'partial', 'failed')), created_at TEXT NOT NULL, evidence TEXT NOT NULL)")
+            if "rules" not in {row["name"] for row in db.execute("PRAGMA table_info(turns)")}:
+                db.execute("ALTER TABLE turns ADD COLUMN rules TEXT NOT NULL DEFAULT '[]'")
             db.execute("CREATE INDEX IF NOT EXISTS turns_session_id ON turns(session_id, id DESC)")
             db.execute("CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT NOT NULL, created_at TEXT NOT NULL)")
             existing = db.execute("SELECT mode, role FROM sessions WHERE id = ?", (self.session_id,)).fetchone()
@@ -228,10 +325,11 @@ class ResearchMemory:
         if status == "completed" and not answer.strip():
             raise ValueError("A completed turn must have an answer")
         evidence = _json(_extract_evidence(chats))
+        rules = _json(_extract_rules(question, answer, chats))
         now = _now()
         with self._db() as db:
-            cursor = db.execute("INSERT INTO turns (session_id, question, answer, roles, status, created_at, evidence) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                                (self.session_id, question, answer, _json(list(roles)), status, now, evidence))
+            cursor = db.execute("INSERT INTO turns (session_id, question, answer, roles, status, created_at, evidence, rules) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                                (self.session_id, question, answer, _json(list(roles)), status, now, evidence, rules))
             db.execute("UPDATE sessions SET updated_at = ?, title = CASE WHEN title = '' THEN ? ELSE title END WHERE id = ?",
                        (now, question[:80], self.session_id))
             return cursor.lastrowid
@@ -293,16 +391,7 @@ class ResearchMemory:
             result["notes"].append(note)
         budget = (MAX_CONTEXT_CHARS - len(_json(result)) - 100) // max(1, len(turns))
         for raw in reversed(turns):
-            turn = _turn(raw)
-            turn["evidence"] = _bounded_evidence(turn["evidence"], max(2, budget - 1800))
-            for key, maximum in (("question", 500), ("answer", 1000)):
-                if len(turn[key]) > maximum:
-                    turn[key] = turn[key][:maximum] + "…"
-                    turn["truncated"] = True
-            # Long role labels or unusual references consume the same budget.
-            while len(_json(turn)) > budget and turn["answer"]:
-                turn["answer"] = turn["answer"][:max(0, len(turn["answer"]) - 250)]
-                turn["truncated"] = True
-            if len(_json(turn)) <= budget:
+            turn = summarize_turn(_turn(raw), budget)
+            if turn is not None:
                 result["recent_turns"].append(turn)
         return result

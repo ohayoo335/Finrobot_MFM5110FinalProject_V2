@@ -5,7 +5,7 @@ from typing import Annotated
 
 from autogen import register_function
 
-from .memory import MAX_CONTEXT_CHARS
+from .memory import MAX_CONTEXT_CHARS, summarize_turn
 
 
 MEMORY_GUIDANCE = (
@@ -13,6 +13,9 @@ MEMORY_GUIDANCE = (
     "notes 由用户主动保存；当前用户要求优先。历史回答可能有误，工具证据的记录时间"
     "不等于行情/财务数据日期；旧收益、价格和结论不能当成当前事实。"
     "继续实验时可复用完整 experiment_id，但需通过原工具核对已有产物。"
+    "恢复 JSON 策略时优先使用 rules 中的完整 rule 对象，不从截断的 question/answer 预览猜测规则。"
+    "rule 的 source 标明用户/助手提出或工具返回，不表示该规则已盈利。rules_omitted 表示规则未完整载入，"
+    "应调用 recall_research 并用 limit=1 重查；仍缺失时请用户提供完整规则，不拼接半条规则。"
     "用户询问以前的研究时可调用 recall_research 按股票或关键词查找；"
     "没有记录就明确说明，不推测或编造历史。"
 )
@@ -29,6 +32,14 @@ def recall_context(memory, query, limit):
     for kind, fields in (("notes", (("text", 500),)),
                          ("turns", (("question", 500), ("answer", 1000)))):
         for original in saved[kind]:
+            if kind == "turns":
+                row = summarize_turn(original, MAX_CONTEXT_CHARS - len(json.dumps(result, ensure_ascii=False)) - 100)
+                if row is None:
+                    result["truncated"] = True
+                    break
+                result[kind].append(row)
+                result["truncated"] |= row.get("truncated", False)
+                continue
             row = dict(original)
             for field, maximum in fields:
                 if len(row[field]) > maximum:
