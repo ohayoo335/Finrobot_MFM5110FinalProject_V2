@@ -30,7 +30,7 @@ V1 来源为[组员 1 分享的项目](https://github.com/yjt2003/Finrobot_MFM51
 | 多轮交互 | 已支持单次提问与保留上下文的 CLI 对话 | 接入用户指定股票、日期、均线、资金和开仓预算；支持继续生成代码、查询风险及切换实验，实验按参数和数据哈希隔离 |
 | 实验与证据 | 保留的投资小组、多因子、组合优化等原有实验脚本 | 原固定案例 5 次生成与 45 次冻结回放；新增 15 次多案例独立生成、12 个因子想法与去重后 27 个样本外比较，保存失败、指标、交易和图表 |
 | 终端输出 | Agent 调用过程直接显示在控制台 | 默认显示等待提示、本轮最终分析和保存位置；详细过程进入日志，支持 `--verbose`；修复最终答复漏显及误取历史文本的问题 |
-| 环境与交接 | 原有依赖表、配置说明和示例 | 新增 Windows / Python 3.11 锁定依赖、根目录启动脚本、完整离线复验、162 项测试、会话与完整 JSON 规则恢复、打包脚本及不含真实 Key 的配置模板 |
+| 环境与交接 | 原有依赖表、配置说明和示例 | 新增 Windows / Python 3.11 锁定依赖、根目录启动脚本、完整离线复验、166 项测试、会话与完整 JSON 规则恢复、打包脚本及不含真实 Key 的配置模板 |
 
 V2 将已有投研框架扩展为可交互、可复现、可核对的量化实验：既检查固定规则代码的实现，也评价模型提出的受限因子。现有结果尚未证明 LLM 能提高投资收益。
 
@@ -134,7 +134,7 @@ py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe scripts/validate_v2.py
 ```
 
-**这一步完成后：** 控制台 9 项检查的 `ok` 应全部为 `true`，汇总写入 `artifacts/quant_v2/validation_summary.json`。检查覆盖 162 项测试、依赖、交互工具、原 5 份代码、多标的评价、15 份稳定性代码重跑、因子回放与指标汇总；新增测试覆盖 Memory、完整规则恢复、旧数据库升级、嵌套预热、历史财务和 CLI 工具。首次安装不计入复验耗时；该离线命令不自动发起新的模型对话。
+**这一步完成后：** 控制台 9 项检查的 `ok` 应全部为 `true`，汇总写入 `artifacts/quant_v2/validation_summary.json`。检查覆盖单元测试、依赖、交互工具、原 5 份代码、多标的评价、15 份稳定性代码重跑、因子回放与指标汇总；测试覆盖 Memory、完整规则恢复、旧数据库升级、嵌套预热、历史财务和 CLI 工具。当前 166 项单元测试已单独通过；上次完整 9 项复验对应整合阶段的 162 项版本。首次安装不计入复验耗时；该离线命令不自动发起新的模型对话。
 
 这一检查以仓库内保存的实验记录完整为前提，不需要先填写模型 Key，也不进行新的模型对话。只想复现已有实验的组员可以做到这一步，再查看[实验与复现](#实验与复现)；要使用自然语言交互，继续第 4 步。
 
@@ -273,7 +273,20 @@ Memory 保存原始问题、最终回答、角色、完成状态，以及工具�
 
 `/forget` 删除笔记后会刷新后续上下文，但**不会删除旧最终回答、会话记录、日志或实验文件**；旧回答如果已经引用该笔记，原文仍保留。`--no-memory` 关闭的是 Memory 数据库访问，原有分析文件与日志保存行为仍然适用。运行中记忆读写失败会提示，已生成的分析仍可保留；启动时无法打开数据库会报错，可用 `--no-memory` 继续。
 
-这是本地 SQLite 存储与关键词检索，不增加 LLM 或 embedding 请求，不训练模型，也没有自动策略进化。旧价格、收益和结论只是历史资料，记录时间不是行情或财务数据日期；继续实验须通过原工具核对已有产物，不能将历史回答当作实时事实。本轮仅做离线回归，尚未重新进行真实 API 的跨进程会话验收。
+这是本地 SQLite 存储与关键词检索，不增加额外 LLM 或 embedding 请求，不训练模型，也没有自动策略进化。正常提问仍会调用模型。旧价格、收益和结论只是历史资料，记录时间不是行情或财务数据日期；继续实验须通过原工具核对已有产物，不能将历史回答当作实时事实。
+
+**真实续聊验收（2026-11-19）：** 基于整合提交 `889440c`，9 个真实模型场景分别在新 CLI 进程中执行，使用独立验收数据库，功能核对全部通过。自动模式恢复了长回答末尾的完整规则，并在换股、换区间后保持策略名和全部条件；单角色模式也完成检索和重启续聊。两次回测的 16 项数值检查与交易账本一致。新会话默认不带入其他会话问答、显式跨会话查询、笔记保存/删除后的读取均通过；本地控制还确认 `--no-memory` 不创建数据库。
+
+这轮没有改动产品代码，新增了验收脚本和 4 项审计器回归，当前 166 项离线测试及依赖检查通过。第 9 个场景返回了完整规则对象，未按要求外包 `rule_json`；审计器现兼容后端接受的两种形状，并继续要求完整规则逐字段一致。原始响应未改写，没有为此追加模型请求。共记录 13 个模型响应、34,596 token，实际费用以服务商账单为准。完整基本面、新闻和 PDF 流程不在这轮范围内；详情见 [Memory 真实验收摘要](artifacts/quant_v2/memory_online_validation.json)。
+
+复验步骤：先完成前面的环境安装与 API 配置，再从仓库根目录运行。第一条会新建独立验收数据库并产生真实模型及行情工具用量；第二条仅重审本机已有记录，不重新调用模型。
+
+```powershell
+# 新跑 9 个真实场景，不使用你的个人 Memory 数据库
+.\.venv\Scripts\python.exe scripts/validate_memory_online.py --online
+# 把目录替换为第一条实际输出的 run；下载仓库不包含这些原始记录
+.\.venv\Scripts\python.exe scripts/validate_memory_online.py --audit artifacts/agent_chats/memory_validation/20261119T134935141193
+```
 
 实现入口：[memory.py](finrobot_autogen/finrobot/agents/memory.py)、[memory_tools.py](finrobot_autogen/finrobot/agents/memory_tools.py)、[run_agent.py](finrobot_autogen/run_agent.py)。设计参考官方 [AI4Finance-Foundation/FinRobot 的固定提交 `63e1884`](https://github.com/AI4Finance-Foundation/FinRobot/tree/63e1884a42ea7b729551a5424b4bd6a65af636e0) 中的会话记录与本地持久化做法，按本项目 AutoGen CLI 独立实现。参考文件：
 
@@ -407,7 +420,7 @@ Memory 保存原始问题、最终回答、角色、完成状态，以及工具�
 
 固定案例入口支持 `fetch`、`baseline`、`generate`、`repair`、`verify`、`evaluate`、`all` 和 `--resume`；`--refresh-data` 会重新取数。多标的入口支持 `fetch`、`evaluate`、`all`、`--config` 和 `--resume`。
 
-最新测试数与逐项结果见 [validation_summary.json](artifacts/quant_v2/validation_summary.json)。PR #2 整合后，162 项测试与完整 9 项离线复验在 Windows / Python 3.11.16 专用验证环境通过，本机约 139 秒，详见 [pr2_integration_validation.json](artifacts/quant_v2/pr2_integration_validation.json)。原作者的 146 项 Linux 环境记录保留于 [bugfix_memory_validation.json](artifacts/quant_v2/bugfix_memory_validation.json)。记忆接入前的 102 项版本及真实五轮结果见 [auto_online_validation.json](artifacts/quant_v2/auto_online_validation.json)；更早记录也保留，不混作当前 Memory 在线验收。耗时不包含首次安装，不代表其他机器的运行时间。
+最近一次完整 9 项复验见 [validation_summary.json](artifacts/quant_v2/validation_summary.json)：PR #2 整合阶段的 162 项测试与全部检查在 Windows / Python 3.11.16 专用验证环境通过，本机约 139 秒，详见 [pr2_integration_validation.json](artifacts/quant_v2/pr2_integration_validation.json)。之后的 Memory 真实验收新增 4 项审计器回归，166 项单元测试单独通过（测试报告计时约 6.3 秒），依赖检查通过；本轮未重跑整套 9 项实验，证据见 [memory_online_validation.json](artifacts/quant_v2/memory_online_validation.json)。原作者的 146 项 Linux 环境记录保留于 [bugfix_memory_validation.json](artifacts/quant_v2/bugfix_memory_validation.json)。记忆接入前的 102 项版本及真实五轮结果见 [auto_online_validation.json](artifacts/quant_v2/auto_online_validation.json)。耗时不包含首次安装，不代表其他机器的运行时间。
 
 ## 环境补充
 
@@ -502,7 +515,7 @@ flowchart LR
 
 ### 自动模式五轮真实验收（记忆接入前）
 
-以下历史记录对应 `9a32379` 的无 Memory 自动模式：同一真实 CLI 会话完成五轮，覆盖价量因子计算、规则提出、跨轮回测、换股及多角色汇总。使用真实模型与行情接口，观察器未替换返回值；36 项数值一致性检查、规则与参数保留、账本、落盘与无刷屏检查通过。新增 Memory 的跨进程恢复本轮只做离线验证，不能把旧结果视为开启 Memory 后的在线验收。
+以下历史记录对应 `9a32379` 的无 Memory 自动模式：同一真实 CLI 会话完成五轮，覆盖价量因子计算、规则提出、跨轮回测、换股及多角色汇总。使用真实模型与行情接口，观察器未替换返回值；36 项数值一致性检查、规则与参数保留、账本、落盘与无刷屏检查通过。Memory 接入后的真实跨进程恢复另见上文 [本地研究记忆](#本地研究记忆memory)，不能将两轮结果混作同一次验收。
 
 | 规则案例 | 策略收益 | 同预算买入持有 |
 | --- | --- | --- |

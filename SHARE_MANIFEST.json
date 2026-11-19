@@ -5035,6 +5035,11 @@
     "sha256": "a1d6b430edb3464dc1d04b217327587e8b9218e31ded7ff280fa19d3c84cec12"
   },
   {
+    "path": "artifacts/quant_v2/memory_online_validation.json",
+    "bytes": 11234,
+    "sha256": "d9003b066a4247e968c25f6fe80c1b5cbc89ae7fdf2d4714615be8fc47d49e37"
+  },
+  {
     "path": "artifacts/quant_v2/methodology.txt",
     "bytes": 252,
     "sha256": "25e983f34f634244ac35529c94d1366fe6b7c38a94b2d67a79854ede1408227b"
@@ -6776,13 +6781,13 @@
   },
   {
     "path": "PROJECT_STATUS.md",
-    "bytes": 32176,
-    "sha256": "85f0828753efd52190d7b15ad0fb1b11c8182b6815e17c3deb4a43984dfa362b"
+    "bytes": 35350,
+    "sha256": "38c3b4068d29aae601a2f4a79715e7e1d3ae54f67e0fe9cdcbc472ad91d56891"
   },
   {
     "path": "README.md",
-    "bytes": 50794,
-    "sha256": "3b34ffa9c2f7e202f3a64ecb0aebd2b30847b4250e1614740fed9aa8e1192928"
+    "bytes": 52884,
+    "sha256": "aaacf4d36add635c4352477a18782f55572129e8987133d931e52f4e1013f4fb"
   },
   {
     "path": "requirements-windows-py311.lock.txt",
@@ -6816,8 +6821,8 @@
   },
   {
     "path": "scripts/_auto_validation_observer.py",
-    "bytes": 3216,
-    "sha256": "cd436ee6b1ca4335b67b7d7366db502f93979de4df3afd23331fc4ac69822347"
+    "bytes": 3404,
+    "sha256": "82c4c2aca9584aa0295019ef1ac10e22a6eb99b808115b29ca4c40c8648a4d50"
   },
   {
     "path": "scripts/evaluate_agent_methodology.py",
@@ -6833,6 +6838,11 @@
     "path": "scripts/validate_auto_research.py",
     "bytes": 18809,
     "sha256": "9ae3536c75c618b9b45bfe4441d4cb74f53028b794f52455e5ebbf77a8084df4"
+  },
+  {
+    "path": "scripts/validate_memory_online.py",
+    "bytes": 19131,
+    "sha256": "992246dd30a102679d0565dd6dc470dd8264df3555f3f36e70b2578833a42834"
   },
   {
     "path": "scripts/validate_quant_dialogue.py",
@@ -6893,6 +6903,11 @@
     "path": "tests/test_memory_cli.py",
     "bytes": 13913,
     "sha256": "1fbd3428823b6394673873748a33415074be14c866132e45d403e26f60779f8a"
+  },
+  {
+    "path": "tests/test_memory_online_audit.py",
+    "bytes": 1928,
+    "sha256": "e19e3087b3ada93eb0fb17ce9d512e0fac9ea6ea86e5ac2d659397adbbc81693"
   },
   {
     "path": "tests/test_memory_rules.py",

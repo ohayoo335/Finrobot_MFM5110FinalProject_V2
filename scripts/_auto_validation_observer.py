@@ -15,25 +15,26 @@ _directory = os.environ.get("FINROBOT_AUTO_OBSERVATIONS")
 
 
 def observe(frame, event, returned):
-    if event != "return" or frame.f_code.co_name not in {"get_a_share_factors", "_run_v2_backtest", "_reply"}:
+    if event != "return" or frame.f_code.co_name not in {"get_a_share_factors", "_run_v2_backtest", "_reply", "ask"}:
         return
     filename = frame.f_code.co_filename.replace("\\", "/")
     name = frame.f_code.co_name
     if not (filename.endswith("/functional/factors.py") or
             filename.endswith("/functional/momentum_backtest.py") or
-            filename.endswith("/agents/research_router.py")):
+            filename.endswith("/agents/research_router.py") or filename.endswith("/run_agent.py")):
         return
     folder = Path(_directory)
     try:
         turn = json.loads((folder.parent / "current_turn.json").read_text(encoding="utf-8"))["turn"]
         identity = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f") + "_" + uuid4().hex[:8]
         record = {"turn": turn, "function": name, "recorded_at": datetime.now(timezone.utc).isoformat()}
-        if name == "_reply":
-            agent = frame.f_locals.get("agent")
+        if name in {"_reply", "ask"}:
+            agent = frame.f_locals.get("agent") if name == "_reply" else frame.f_locals.get("assistant")
             if agent is None:
                 return
             usage = agent.assistant.client.actual_usage_summary or {}
-            record.update(agent=agent.assistant.name, reply_ok=isinstance(returned, dict) and "answer" in returned,
+            record.update(agent=agent.assistant.name, reply_ok=(isinstance(returned, dict) and "answer" in returned)
+                          or bool(getattr(returned, "chat_history", None)),
                           usage={model: {key: values.get(key, 0) for key in
                                  ("prompt_tokens", "completion_tokens", "total_tokens")}
                                  for model, values in usage.items() if isinstance(values, dict)})

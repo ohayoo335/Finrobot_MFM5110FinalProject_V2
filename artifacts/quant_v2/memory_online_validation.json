@@ -1,0 +1,291 @@
+{
+  "ok": true,
+  "validated_at": "2026-11-19T14:01:22.343750+00:00",
+  "base_commit": "889440c90ed39a2d711930abd7138665e4124764",
+  "accepted_run_id": "20261119T134935141193",
+  "model": "deepseek-flash",
+  "environment": {
+    "os": "Windows",
+    "python": "3.11.16",
+    "entrypoint": "python finrobot_autogen/run_agent.py --mode auto|single --session <acceptance-session> --memory-db <isolated-acceptance-db>"
+  },
+  "validation_method": "Nine real CLI model stages, each in a new process. Read-only Python profile observer records actual tool data, returns and SDK usage; no mock model responses. Independent signal formulas and ledger replay use the actual tool-used market snapshots.",
+  "acceptance_database_isolated_from_personal_memory": true,
+  "functional_scenarios_passed": 9,
+  "distinct_model_cli_processes": 9,
+  "rule_test": {
+    "kind": "User-prescribed, non-default three-condition rule; verifies exact recovery rather than unconstrained factor invention",
+    "unique_generated_strategy_name_preserved": true,
+    "conditions": {
+      "all": [
+        {
+          "indicator": "momentum",
+          "window": 17,
+          "operator": ">",
+          "value": 0.0125
+        },
+        {
+          "indicator": "average_volume_ratio",
+          "short_window": 6,
+          "long_window": 23,
+          "operator": ">",
+          "value": 1.08
+        },
+        {
+          "indicator": "moving_average_cross",
+          "field": "close",
+          "short_window": 9,
+          "long_window": 37,
+          "operator": ">",
+          "value": 0
+        }
+      ]
+    },
+    "execution": "next_open",
+    "rule_begins_after_character": 2828
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "ok": true,
+      "tool_calls": [],
+      "completed_turn_saved": true,
+      "answer_visible_once": true,
+      "console_quiet": true,
+      "rule_after_preview_limit": true,
+      "rule_stored_whole": true,
+      "rule_json_offset": 2828,
+      "scenario": "Long answer with complete rule after preview boundary",
+      "mode": "auto",
+      "roles": [
+        "A_Share_Factor_Ideator"
+      ],
+      "model_response_messages": 1
+    },
+    {
+      "stage": 2,
+      "ok": true,
+      "tool_calls": [
+        "backtest_a_share_strategy"
+      ],
+      "completed_turn_saved": true,
+      "answer_visible_once": true,
+      "console_quiet": true,
+      "symbol": "000651",
+      "start": "2023-01-01",
+      "end": "2024-12-31",
+      "data_sha256": "96a39f0d6135a95df208fb17422a2e57855de7739d878f4ab54547a3027ecf8b",
+      "rule_preserved": true,
+      "ledger_ok": true,
+      "numeric_checks": 8,
+      "strategy_total_return": 0.06832754421850051,
+      "buy_hold_total_return": 0.6207205201199999,
+      "new_process_restored_session": true,
+      "scenario": "Automatic mode restores the rule after process restart and runs 000651",
+      "mode": "auto",
+      "roles": [
+        "A_Share_Factor_Ideator"
+      ],
+      "model_response_messages": 2,
+      "source": {
+        "source": "akshare_tencent",
+        "endpoint": "stock_zh_a_hist_tx",
+        "adjust": "qfq",
+        "volume_unit": "lots (100 shares)"
+      }
+    },
+    {
+      "stage": 3,
+      "ok": true,
+      "tool_calls": [
+        "backtest_a_share_strategy"
+      ],
+      "completed_turn_saved": true,
+      "answer_visible_once": true,
+      "console_quiet": true,
+      "symbol": "600031",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "data_sha256": "32dcec4cbabef8e1375508fee73263b2de45ca908fb410593162681f66ff7cad",
+      "rule_preserved": true,
+      "ledger_ok": true,
+      "numeric_checks": 8,
+      "strategy_total_return": 0.14588747116750067,
+      "buy_hold_total_return": 0.3147138807500003,
+      "new_process_restored_session": true,
+      "scenario": "Another restarted process switches to 600031 while preserving all rule conditions",
+      "mode": "auto",
+      "roles": [
+        "A_Share_Factor_Ideator"
+      ],
+      "model_response_messages": 2,
+      "source": {
+        "source": "akshare_tencent",
+        "endpoint": "stock_zh_a_hist_tx",
+        "adjust": "qfq",
+        "volume_unit": "lots (100 shares)"
+      }
+    },
+    {
+      "stage": 4,
+      "ok": true,
+      "tool_calls": [],
+      "completed_turn_saved": true,
+      "answer_visible_once": true,
+      "console_quiet": true,
+      "new_session_did_not_receive_other_turns": true,
+      "scenario": "New session does not automatically receive another session conversation",
+      "mode": "auto",
+      "roles": [
+        "A_Share_Factor_Researcher"
+      ],
+      "model_response_messages": 1
+    },
+    {
+      "stage": 5,
+      "ok": true,
+      "tool_calls": [
+        "recall_research"
+      ],
+      "completed_turn_saved": true,
+      "answer_visible_once": true,
+      "console_quiet": true,
+      "answer_shape": "rule_json_wrapper",
+      "explicit_cross_session_recall_ok": true,
+      "scenario": "Explicit cross-session recall returns the full rule and original source session",
+      "mode": "auto",
+      "roles": [
+        "A_Share_Factor_Researcher"
+      ],
+      "model_response_messages": 2
+    },
+    {
+      "stage": 6,
+      "ok": true,
+      "tool_calls": [],
+      "completed_turn_saved": true,
+      "answer_visible_once": true,
+      "console_quiet": true,
+      "canonical_note_state_seen_by_model": true,
+      "scenario": "New session sees an explicitly saved note without a recall call",
+      "mode": "auto",
+      "roles": [
+        "A_Share_Factor_Researcher"
+      ],
+      "model_response_messages": 1
+    },
+    {
+      "stage": 7,
+      "ok": true,
+      "tool_calls": [],
+      "completed_turn_saved": true,
+      "answer_visible_once": true,
+      "console_quiet": true,
+      "canonical_note_state_seen_by_model": true,
+      "scenario": "After note deletion another new session sees no canonical note",
+      "mode": "auto",
+      "roles": [
+        "A_Share_Factor_Researcher"
+      ],
+      "model_response_messages": 1
+    },
+    {
+      "stage": 8,
+      "ok": true,
+      "tool_calls": [
+        "recall_research"
+      ],
+      "completed_turn_saved": true,
+      "answer_visible_once": true,
+      "console_quiet": true,
+      "answer_shape": "rule_json_wrapper",
+      "explicit_cross_session_recall_ok": true,
+      "scenario": "Single-role mode explicitly recalls the complete prior rule",
+      "mode": "single",
+      "roles": [
+        "A_Share_Factor_Ideator"
+      ],
+      "model_response_messages": 2
+    },
+    {
+      "stage": 9,
+      "ok": true,
+      "tool_calls": [],
+      "completed_turn_saved": true,
+      "answer_visible_once": true,
+      "console_quiet": true,
+      "answer_shape": "direct_rule_object",
+      "single_role_restart_rule_restored": true,
+      "scenario": "Single-role mode restores its own complete rule after process restart",
+      "mode": "single",
+      "roles": [
+        "A_Share_Factor_Ideator"
+      ],
+      "model_response_messages": 1
+    }
+  ],
+  "local_controls": {
+    "no_memory_skips_database": true,
+    "explicit_note_deleted": true,
+    "old_verbatim_answer_retained_after_note_deletion": true,
+    "automatic_role_restored": true
+  },
+  "independent_numeric_checks": 16,
+  "model_response_messages": 13,
+  "tokens_reported_by_sdk": {
+    "prompt_tokens": 30818,
+    "completion_tokens": 3778,
+    "total_tokens": 34596
+  },
+  "audit_adjustments": [
+    {
+      "stage": 9,
+      "initial_result": "Auditor KeyError: rule_json",
+      "actual_answer_shape": "Complete direct rule object, accepted by the strategy-rule validator",
+      "requested_shape": "Object with a rule_json wrapper",
+      "functional_result": "Complete name, conditions, thresholds and execution exactly matched; wrapper instruction was not followed",
+      "change": "Auditor accepts direct and wrapped objects; canonical rule equality is still required",
+      "model_response_or_numeric_results_modified": false,
+      "extra_model_requests_for_reaudit": 0
+    },
+    {
+      "check": "automatic_role_restored",
+      "initial_result": "Manual PowerShell pipe encoded the Chinese follow-up as question marks",
+      "change": "Rechecked from a UTF-8 Python source file with the actual Chinese follow-up; role restored correctly",
+      "product_code_modified": false,
+      "extra_model_requests": 0
+    }
+  ],
+  "offline_regression": {
+    "command": ".venv/Scripts/python.exe -X utf8 -m unittest discover -s tests -v",
+    "ok": true,
+    "tests": 166,
+    "seconds_reported_by_unittest": 6.311,
+    "api_calls_requested": 0,
+    "dependency_check": {
+      "command": ".venv/Scripts/python.exe -m pip check",
+      "ok": true
+    },
+    "full_nine_check_pipeline": "Previously passed with 162 tests at PR #2 integration; not rerun for these audit-only changes. See pr2_integration_validation.json."
+  },
+  "published_product_code_unchanged_during_acceptance": true,
+  "product_file_sha256": {
+    "finrobot_autogen/run_agent.py": "6cbd0c1e996a1f5413743f30ae1879b12da30fc1cd82588ceca48e790b55573a",
+    "finrobot_autogen/finrobot/agents/memory.py": "c2e1ccfc3c29eeb323b828b66ea5e69aee27fe93ae74a190015ab1f9d6ac316f",
+    "finrobot_autogen/finrobot/agents/memory_tools.py": "6f8ef271eb262fcf8195294cfdab8379b96a1908e92157d53791e957d08a1c42",
+    "finrobot_autogen/finrobot/agents/research_router.py": "a259aaf71147b4ad611323c749dd41ffec3ddaa4d5bd0c3859e89ce420106df2",
+    "finrobot_autogen/finrobot/functional/momentum_backtest.py": "162ec19cab3c2ec08cdb9bb4c3990ae222486f397b6c0f2fe4e71651b69ac7cb",
+    "finrobot_autogen/finrobot/functional/quantitative.py": "45a864402f2b26d3da9abf27fc62c45cd4317390aff25cd1df656d42a21fef2a"
+  },
+  "preserved_original_model_evidence_files": 141,
+  "privacy": "Only this sanitized summary is public. Verbatim answers, prompts, database, note tags, session identifiers, consoles and exact interactive snapshots stay in ignored local directories. Credentials are excluded.",
+  "limitations": [
+    "Functional acceptance covers these nine scenarios and four local controls; it is not a success-rate estimate over many independent runs.",
+    "One rule-bearing answer used a direct rule object instead of the requested rule_json wrapper. Functional equivalence does not imply strict output-envelope compliance.",
+    "New-session isolation means no implicit injection of other session turns. Explicit cross-session recall and shared notes are supported within the same database; this is not a user-access-control boundary.",
+    "Deleting an explicit note does not erase earlier verbatim answers, logs or artifacts.",
+    "The rule is a user-specified three-condition JSON rule, not an unconstrained factor discovery or investment-alpha result. Both audited returns are below buy-and-hold.",
+    "All-role fundamentals, news, PDF/OCR workflows, every stock/date and automatic strategy learning were not validated.",
+    "SDK token statistics do not determine actual monetary charges; provider billing is authoritative."
+  ]
+}
