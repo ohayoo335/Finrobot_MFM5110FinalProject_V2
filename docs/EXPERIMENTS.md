@@ -34,9 +34,9 @@
 
 ```powershell
 # 在独立进程中执行保存的 5 份代码并核对原结果
-.\run_quant_v2.cmd verify
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_quant_experiment.py verify
 # 完整已有记录上复用生成，重算传统对照与评估
-.\run_quant_v2.cmd all --resume
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_quant_experiment.py all --resume
 ```
 
 | 策略 | 总收益率 | 最大回撤 | Sharpe |
@@ -56,11 +56,11 @@
 
 ```powershell
 # 已有快照上的冻结代码回放，不请求模型
-.\run_generalization.cmd evaluate --resume
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_generalization.py evaluate --resume
 # 获取缺失行情并评价，可能访问行情服务
-.\run_generalization.cmd all --resume
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_generalization.py all --resume
 # 自定义配置文件，按参数隔离结果
-.\run_generalization.cmd all --config path\to\my_config.json --resume
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_generalization.py all --config path\to\my_config.json --resume
 ```
 
 冻结固定案例的 5 份模型代码，共回放 45 次，全部与人工同规则结果一致；这是 45 次执行，不是 45 次模型生成。SMA 相对买入持有有胜有负，全部结果保留，不证明任意市场有效。
@@ -73,10 +73,10 @@
 
 ```powershell
 # 复现已有因子结果，无需 Key
-.\run_factor_ideation.cmd evaluate
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_factor_ideation.py evaluate
 # 生成新实验：需 Key，计划 3 次模型请求，使用新目录
-.\run_factor_ideation.cmd generate --out-root artifacts/factor_ideation_new
-.\run_factor_ideation.cmd evaluate --out-root artifacts/factor_ideation_new
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_factor_ideation.py generate --out-root artifacts/factor_ideation_new
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_factor_ideation.py evaluate --out-root artifacts/factor_ideation_new
 ```
 
 已有 3 次生成返回 12 个有效想法，去重后 9 个，跨三个标的共 27 个样本外比较：**0/27 优于买入持有，12/27 优于 SMA（44.44%）**。正式评价窗口晚于构思窗口，不根据样本外成绩重新选择规则或调参。
@@ -91,12 +91,12 @@
 
 ```powershell
 # 汇总已有结果，无需 Key
-.\run_stability.cmd evaluate
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_stability.py evaluate
 # 独立进程重新执行保存的 15 份代码
-.\run_stability.cmd verify
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_stability.py verify
 # 新实验：需 Key，计划 15 次模型请求，使用新目录
-.\run_stability.cmd generate --out-root artifacts/stability_new
-.\run_stability.cmd evaluate --out-root artifacts/stability_new
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_stability.py generate --out-root artifacts/stability_new
+.\.venv\Scripts\python.exe -X utf8 finrobot_autogen\experiments\run_stability.py evaluate --out-root artifacts/stability_new
 ```
 
 15/15 次生成通过，JSON、规则、前缀因果性与可信引擎一致性均为 100%；生成延迟均值 7.90 秒、中位 7.53 秒，SDK token 合计 27,001。重跑代码不计为新的独立生成，结果不代表投资收益。

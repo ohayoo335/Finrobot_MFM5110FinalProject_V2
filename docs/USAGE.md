@@ -6,7 +6,7 @@
 
 ## 角色与启动方式
 
-统一入口为 `run_finrobot.cmd`。不带问题进入多轮对话，带问题执行单次分析；默认自动分派，单独指定 `--role` 等同固定单角色。`--mode auto` 不能与 `--role` 同用。
+统一入口为 `run_finrobot.cmd`。不带问题进入多轮对话，带问题执行单次分析。程序会根据问题选择角色；综合问题会分给多个角色，再汇总回答，日常使用无需选择角色。
 
 | 角色 | 负责内容 | 验证范围 |
 | --- | --- | --- |
@@ -21,18 +21,13 @@
 # 自动分派：多轮或单次
 .\run_finrobot.cmd
 .\run_finrobot.cmd "回测000651在2023-2024年的10/30均线并检查风险"
-# 固定角色
-.\run_finrobot.cmd --role Quant_Analyst
-.\run_finrobot.cmd "分析600519的盈利和估值" --role A_Share_Analyst
-.\run_finrobot.cmd --role Market_Analyst
-.\run_finrobot.cmd --role Expert_Investor
 # 模型、数据源与调试输出
-.\run_finrobot.cmd --role Quant_Analyst --model deepseek-flash --provider akshare --verbose
+.\run_finrobot.cmd --model deepseek-flash --provider akshare --verbose
 # 查看参数，不调用模型
 .\run_finrobot.cmd --help
 ```
 
-自动模式用规则匹配问题意图，支持股价/新闻、基本面、参数化 SMA、因子和自定义规则等。单角色直接回答；多角色分别完成本轮分项，再由综合角色汇总。失败项会列出，各角色的工具按任务范围限制，不应混用股票、日期或指标。
+自动模式用规则匹配问题意图，支持股价/新闻、基本面、参数化 SMA、因子和自定义规则等。单角色直接回答；多角色分别完成本轮分项，再由综合角色汇总。失败项会列出，各角色的工具按任务范围限制，不应混用股票、日期或指标。高级调试或恢复原单角色会话时仍可指定 `--role`，它等同 `--mode single`，不能与 `--mode auto` 同用。
 
 默认终端只显示等待提示、当前最终分析和保存位置，调试过程写入日志。`--verbose` 显示工具与调试细节。输入 `exit`、`quit`、`:q` 或 `/exit` 退出，更新代码后退出旧进程再启动。
 

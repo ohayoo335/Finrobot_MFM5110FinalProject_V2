@@ -1,6 +1,10 @@
 # FinRobot：A 股投研与量化实验
 
-面向 MFM5110 小组项目的命令行研究工具：用自然语言提出股票与策略问题，由 Agent 调用数据、回测和风险工具，输出可核对的分析与实验记录。项目同时提供固定规则代码生成、受限因子构思、样本外评价和多案例稳定性实验。
+**我们实现了一个可以用自然语言交互的 A 股投研与量化实验助手。** 项目面向 MFM5110 小组研究与实验复现。告诉它要研究的股票、时间和问题，程序会根据问题选择角色；综合问题会分给多个角色，再汇总回答，日常使用不需要手动选择角色。
+
+- **做回测、查风险**：获取真实行情，按指定参数比较 SMA 与买入持有，输出收益、回撤、交易和图表，并独立核对交易账本。
+- **生成代码、验证因子**：生成并检查固定 SMA 的 Python 代码，在聊天中提出和回测受限 JSON 因子规则；独立实验还能评价表达式因子的样本外表现。
+- **继续研究、复现实验**：保存会话、完整规则与笔记，重启后继续研究；用冻结数据和模型输出重跑已有实验、核对结果。
 
 **当前为最终版本（代码与实验交付），版本标识为 [V2](VERSION)。** 量化与 Memory 主流程已完成开发和验收；交付内容为代码、命令行入口、数据快照、实验结果与使用文档。课程报告正文尚未编写。现有实验未证明 LLM 能提高投资收益。
 
@@ -111,18 +115,16 @@ if (-not (Test-Path finrobot_autogen\config_api_keys)) { Copy-Item finrobot_auto
 两个实际配置文件都没有扩展名，内容为 JSON，已被 Git 忽略。然后启动：
 
 ```powershell
-# 默认自动分派，进入多轮对话
+# 启动程序，进入多轮对话
 .\run_finrobot.cmd
-# 固定量化角色，适合先体验完整 SMA 流程
-.\run_finrobot.cmd --role Quant_Analyst
 ```
 
-在同一个 `Quant_Analyst` 会话中依次输入，每轮完成后再输入下一句：
+程序自动分派，无需选择角色。在同一个会话中依次输入，每轮完成后再输入下一句：
 
 ```text
 回测000651在2023-2024年的10/30均线，本金10万，开仓预算60%，比较买入持有并检查风险。
-继续生成并运行同规则的Python代码，再检查生成策略的风险。
-现在换成600031，2025年，20/60均线，开仓预算50%，重新比较并解释结果。
+继续为刚才的均线回测生成并运行Python代码，再检查风险。
+换成600031，2025年，20/60均线，开仓预算50%，重新回测并解释结果。
 ```
 
 终端显示本轮最终分析与保存路径；先看 `.md`，再按 `experiment_id` 查指标、交易和图表。输入 `exit` 退出。真实模型请求会产生用量，框架显示的 `cost=0` 不代表免费，费用以服务商账单为准。
@@ -133,17 +135,11 @@ if (-not (Test-Path finrobot_autogen\config_api_keys)) { Copy-Item finrobot_auto
 
 **推荐先运行上面的 `scripts/validate_v2.py`。** 它覆盖单元测试、依赖、交互工具、固定代码回放、多标的评价、稳定性代码重跑、因子回放和指标汇总。已有完整检查的本机耗时约 139 秒，不含首次安装；其他机器耗时会不同。
 
-需要单独查看某一部分时，使用下表命令。均以仓库原始实验记录完整为前提，不需要模型 Key：
+日常使用只需 `run_finrobot.cmd`。实验复现直接调用 Python 脚本，单项回放与统计命令统一放在[实验说明](docs/EXPERIMENTS.md)，无需多个 CMD 入口。仅运行当前 166 项单元测试时使用：
 
-| 要复现什么 | 根目录命令 |
-| --- | --- |
-| 固定案例的 5 份代码执行与一致性 | `.\run_quant_v2.cmd verify` |
-| 3 标的 × 3 时段的 45 次冻结代码回放 | `.\run_generalization.cmd evaluate --resume` |
-| 15 次生成的稳定性统计 | `.\run_stability.cmd evaluate` |
-| 在独立进程中重跑上述 15 份代码 | `.\run_stability.cmd verify` |
-| 冻结因子的样本外评价 | `.\run_factor_ideation.cmd evaluate` |
-| 首次成功率、修正率等指标汇总 | `.\.venv\Scripts\python.exe scripts/evaluate_agent_methodology.py` |
-| 仅运行当前 166 项单元测试 | `.\.venv\Scripts\python.exe -m unittest discover -s tests -v` |
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
 
 复现已有记录不等于重新生成模型回答。要进行新实验，需配置 Key、使用新的结果目录，并保留新请求与失败记录。具体实验配置、单项命令、新因子/稳定性实验和在线验收见[实验与复现说明](docs/EXPERIMENTS.md)。
 
@@ -190,6 +186,6 @@ if (-not (Test-Path finrobot_autogen\config_api_keys)) { Copy-Item finrobot_auto
 - [使用说明](docs/USAGE.md)：角色、模型和数据配置、规则 DSL、Memory、工具及常见问题。
 - [实验与复现](docs/EXPERIMENTS.md)：实验设计、指标口径、已有结果、新实验及真实在线验收。
 - [PROJECT_STATUS.md](PROJECT_STATUS.md)：开发、修复、合并与验收的历史记录；首页以当前实现为准。
-- [ENVIRONMENT_STATUS.md](ENVIRONMENT_STATUS.md)：本机依赖与兼容记录；[COMPLETION_PLAN.md](COMPLETION_PLAN.md) 保留原开发计划，不作为当前功能清单。
+- 环境版本、兼容说明和常见问题统一见[使用说明](docs/USAGE.md#环境与常见问题)；历史计划与初始环境记录可从 Git 历史查阅。
 
 项目基于 [AI4Finance-Foundation/FinRobot](https://github.com/AI4Finance-Foundation/FinRobot) 与[组员共享项目](https://github.com/yjt2003/Finrobot_MFM5110FinalProject) 继续开发。课程项目版本标识为 `V2`，沿用的 Python 包版本为 `0.1.5`。许可与归属见 [LICENSE](LICENSE)、[NOTICE](NOTICE)、[TRADEMARK_POLICY.md](TRADEMARK_POLICY.md)。

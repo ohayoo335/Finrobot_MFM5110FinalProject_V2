@@ -5795,11 +5795,6 @@
     "sha256": "4d0693e94ea2b7d034d3c78d7f73da75c5e2c41f4f72950bff78140ca898eeee"
   },
   {
-    "path": "COMPLETION_PLAN.md",
-    "bytes": 10965,
-    "sha256": "6b12a3e8dccbfab8bfe058e16ef1d2fee39f605e0a4b2292bc20ed888a8a8b5a"
-  },
-  {
     "path": "constraints-windows-py311.txt",
     "bytes": 673,
     "sha256": "f9ae2c83335a319050f96960b081677b05251bc30e8c2078e45193cdd9d552d5"
@@ -5866,18 +5861,13 @@
   },
   {
     "path": "docs/EXPERIMENTS.md",
-    "bytes": 11780,
-    "sha256": "0953416a231153ab178fde6adfdf890fc2eb899857bd0833b2d18ffe0c010c66"
+    "bytes": 12528,
+    "sha256": "b56716e77689f7c1d557092e5c9dc6f86a9141b386305800217acbb4d113031c"
   },
   {
     "path": "docs/USAGE.md",
-    "bytes": 13644,
-    "sha256": "c311f6835bc8bca57f65550165cced8b117dfb59f290b288fa75758fe93a4cd5"
-  },
-  {
-    "path": "ENVIRONMENT_STATUS.md",
-    "bytes": 3706,
-    "sha256": "9c13c51bdee7d1ac9c502559f26c39d81a09d3594d420dc07b70d284b13cce37"
+    "bytes": 13551,
+    "sha256": "ae9289469053522965001968bf23a68a86106340605db5717d1bacbd331e6c67"
   },
   {
     "path": "finrobot_autogen/agent_builder_demo.py",
@@ -6791,13 +6781,13 @@
   },
   {
     "path": "PROJECT_STATUS.md",
-    "bytes": 36297,
-    "sha256": "635c675c88e5e22748d1516cbadb9f0a5ce5d44bf7f0cc4e84cdfd60efadf700"
+    "bytes": 38514,
+    "sha256": "47737590d6b34ab1d8b085966aed2a46c7e3b1fb26def0fbfaf0d52ddecc479c"
   },
   {
     "path": "README.md",
-    "bytes": 16573,
-    "sha256": "10d88789cecec539e3ef856761d887083175a22c3c4c54f9d7ecbaa1a8f607b7"
+    "bytes": 16540,
+    "sha256": "4657a6acb5ff097a0a7d321fcc1b9bc16528144ad3af6843528e271c0d6ab937"
   },
   {
     "path": "requirements-windows-py311.lock.txt",
@@ -6805,29 +6795,9 @@
     "sha256": "22d168a4fd5ded284ea47af8219e0be1d4c41a4fb6c1f66f7185a562f6f5cde3"
   },
   {
-    "path": "run_factor_ideation.cmd",
-    "bytes": 296,
-    "sha256": "b7f72ff1428f2d0d1ab535e3394fb9ba7303336c62ba078f76c2b78de3fb4bb6"
-  },
-  {
     "path": "run_finrobot.cmd",
     "bytes": 273,
     "sha256": "35fcfe98b68bd9cef462650e8b2f973dc6920319af2c5d088c0554107b877bfd"
-  },
-  {
-    "path": "run_generalization.cmd",
-    "bytes": 295,
-    "sha256": "6677b60b5c452e30b1416e404316d1e29cf7473a2e257b769344010df0030c6c"
-  },
-  {
-    "path": "run_quant_v2.cmd",
-    "bytes": 297,
-    "sha256": "a0c918ef4a04f72d0da464eb25cedba4e1011a0ab350682b9db15b1b9a43c78d"
-  },
-  {
-    "path": "run_stability.cmd",
-    "bytes": 290,
-    "sha256": "97b4d1e2d17bdec58653a39fe0484a0105a1b94b94f7dbdad2059041d7b15721"
   },
   {
     "path": "scripts/_auto_validation_observer.py",

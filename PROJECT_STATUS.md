@@ -2,6 +2,14 @@
 
 更新：2026-11-19。当前交接版本标识：`V2`，见 [VERSION](VERSION)。只包含开发与实验交接，不包含课程报告。
 
+## 最终入口与目录精简（2026-11-19）
+
+- 按用户要求，根目录只保留 `run_finrobot.cmd` 一个启动 CMD。默认根据问题选择角色，综合问题由多个角色分项研究后汇总；固定角色参数继续用于高级调试和恢复原有会话。
+- 删除 4 个仅转发参数的实验 CMD，复现文档改为调用原 Python 实验脚本；业务代码、批量实验、数据和全部生成/失败证据保留。README 顶部补充“实现了什么、能做什么”，自动模式示例明确写出换股后重新回测。
+- 早期 `COMPLETION_PLAN.md` 和 `ENVIRONMENT_STATUS.md` 已被当前 README、使用说明和本状态文件覆盖，从最终目录移除；原文件可从文档整理提交 `66ea769` 的 Git 历史查回。当前环境与复现说明统一在 `docs/`。
+- 本地分享包清理为最新一份 ZIP；虚拟环境、NLTK 缓存和原始私有验收记录保留，继续排除在仓库与分享包之外。本次不重新调用模型或行情服务。
+- 本次入口检查：唯一 CMD 启动自动分派并正常退出，4 个 Python 实验入口 `--help` 通过；README 三轮示例均分到量化角色，综合问题分到基本面/市场/因子三角色。4 份文档解析、93 处本地链接与锚点检查通过，未新增模型请求；此前完整实验和 166 项测试结果保持各自原验证范围。
+
 ## 最终版文档整理（2026-11-19）
 
 - 按用户要求，README 直接说明当前实现、完成情况、整体框架、安装运行、复现入口、结果与边界，去掉版本对比和首页累计修改日志。
@@ -71,7 +79,7 @@
 
 - 修正 DSL 标量布尔取反；常量信号改为在剔除预热后的构思区间判断。禁用乘幂，限制表达式长度、AST 节点、嵌套深度和数值字面量，避免未限幅整数幂及过量计算。
 - 因子评价重新校验保存的想法，逐次记录计划、完成、成功、失败、缺失和交付率；未完成的生成不能报告 `ok=true`。样本外窗口必须晚于构思窗口。
-- 稳定性总体通过率统一以全部计划尝试为分母，条件通过率另列。新增 `run_stability.cmd verify`，检查代码/数据并在限时子进程中重跑，另存验证结果，保留首次执行记录。
+- 稳定性总体通过率统一以全部计划尝试为分母，条件通过率另列。新增 `.venv/Scripts/python.exe -X utf8 finrobot_autogen/experiments/run_stability.py verify`，检查代码/数据并在限时子进程中重跑，另存验证结果，保留首次执行记录。
 - 完整验证由 6 项扩展为 9 项，覆盖因子回放、15 份稳定性代码重跑及指标汇总；针对已复现缺陷新增回归测试，现有 67 项测试通过。
 - README 区分交互 SMA 与独立因子实验，明确已有结果复现和新一组生成的不同命令，修正历史测试数；分享清单在最终打包时重新生成。
 - 本轮仅离线重校验、回测和复验，无新增模型请求；原始请求、响应、代码、用量、延迟及首次执行记录以修复前哈希逐一核对。
@@ -148,7 +156,7 @@
 
 本轮处理代码、量化实验、必要的运行说明与组内交接。报告正文、文献综述和报告排版暂不安排。
 
-以现有 A 股数据适配器、AutoGen 工作流和 Backtrader 回测为基础，补齐数据输入、策略推理、代码生成和风险控制；实际完成至少一项课题指定的 LLM 任务，并开展对照和稳定性实验。详细步骤见 [开发补全计划](COMPLETION_PLAN.md)。
+以现有 A 股数据适配器、AutoGen 工作流和 Backtrader 回测为基础，补齐数据输入、策略推理、代码生成和风险控制；实际完成至少一项课题指定的 LLM 任务，并开展对照和稳定性实验。详细步骤保留在 [历史开发计划](https://github.com/ohayoo335/Finrobot_MFM5110FinalProject_V2/blob/66ea7698e6dcc31a8701986af7ff62ef766b5b08/COMPLETION_PLAN.md)。
 
 ## 已完成及验证边界
 
@@ -158,7 +166,7 @@
 - 已通过 DeepSeek SDK 和 Agent 实际连通检查；该结果只证明接口及基础工作流正常。
 - 已整理基于现有代码的开发步骤，并增加 V2 名称、版本标识与交接记录。
 
-详细环境证据见 [ENVIRONMENT_STATUS.md](ENVIRONMENT_STATUS.md)。
+初始环境证据见 [历史环境记录](https://github.com/ohayoo335/Finrobot_MFM5110FinalProject_V2/blob/66ea7698e6dcc31a8701986af7ff62ef766b5b08/ENVIRONMENT_STATUS.md)；当前安装与兼容说明见 [使用文档](docs/USAGE.md#环境与常见问题)。
 
 ## 2026-11-18 首轮验收结果
 
@@ -172,7 +180,7 @@
 | 4. 量化角色与提示词 | 已完成首轮验证 | `Quant_Analyst`、`quant_strategy_profile` 和 `quant_generation_prompt`，实际模型输出含策略逻辑和风险说明 |
 | 5. 工具注册与调用 | 核心接通，部分待补 | 已注册并实际调用 `get_data_summary`、`backtest_reference`、`read_backtest_result`；风控集成在回测与生成代码校验中，尚无独立风险检查工具 |
 | 6. DeepSeek 代码生成、执行与修正记录 | 已完成首轮验证 | 5 次独立生成，1 次 JSON 失败后增加 1 次模型修正，最终 5 份代码与人工结果相同；初始失败均保留 |
-| 7. 实验入口与评估 | 已完成首轮验证 | `run_quant_v2.cmd`、`run_quant_experiment.py`；对照、重复生成、因果性及账本检查通过 |
+| 7. 实验入口与评估 | 已完成首轮验证 | `.venv/Scripts/python.exe -X utf8 finrobot_autogen/experiments/run_quant_experiment.py`、`run_quant_experiment.py`；对照、重复生成、因果性及账本检查通过 |
 | 8. 图表及交接整理 | 开发交接材料已整理 | README 已补充环境、安装、配置、复现命令及 Mermaid 架构图；实验图表已打开检查；报告暂不安排 |
 
 ### 实际结果
@@ -190,8 +198,8 @@
 
 - 新建 `.cache/v2_verify_env`，按完整锁定依赖离线安装并重新安装项目。
 - `python scripts/validate_v2.py --python .cache/v2_verify_env/Scripts/python.exe`：17 项测试、依赖检查、5 份保存代码的独立进程重跑、完整断点续跑均通过；本机约 132 秒，无新增 LLM 请求。
-- `run_quant_v2.cmd all --resume`：复用已保存的模型输出，重算传统对照及评估，本机约 11 秒；不算新的独立生成。
-- `run_quant_v2.cmd verify`：重新执行 5 份保存代码，不调用 API。
+- `.venv/Scripts/python.exe -X utf8 finrobot_autogen/experiments/run_quant_experiment.py all --resume`：复用已保存的模型输出，重算传统对照及评估，本机约 11 秒；不算新的独立生成。
+- `.venv/Scripts/python.exe -X utf8 finrobot_autogen/experiments/run_quant_experiment.py verify`：重新执行 5 份保存代码，不调用 API。
 - 真实 Agent 完成 5 次工具调用，返回的两个收益率和两个回撤数字均与 Python 输出核对一致。
 
 证据：`artifacts/quant_v2/evaluation.json`、`audit.json`、`validation_summary.json`、`offline_verification.json`、`agent_tool_validation.json`、`comparison.csv` 和 `comparison.png`。
@@ -222,7 +230,7 @@
 - 传统 SMA 策略最终资产 72030.44161285007，买入持有最终资产 75762.5849119，初始资金均为 100000；结果来自实际 Backtrader 运行。
 - `python -m unittest discover -s tests -v` 的 16 项检查已通过；测试中的人工价格仅是明确标注的测试夹具。
 - 量化角色、代码生成提示词、AST 约束检查、独立进程执行及统一实验入口已实现，正在进行实际 API 验证。
-- 断点继续：`run_quant_v2.cmd generate --repeats 5 --resume`；完成生成后运行 `run_quant_v2.cmd evaluate`。
+- 断点继续：`.venv/Scripts/python.exe -X utf8 finrobot_autogen/experiments/run_quant_experiment.py generate --repeats 5 --resume`；完成生成后运行 `.venv/Scripts/python.exe -X utf8 finrobot_autogen/experiments/run_quant_experiment.py evaluate`。
 
 ## 原定开发顺序（当前完成情况见上方验收表）
 
@@ -248,6 +256,6 @@
 
 ## 交接给另外两名组员
 
-先按 README 重建 Windows/Python 3.11 环境，再执行 `run_quant_v2.cmd all --resume`、`run_generalization.cmd evaluate --resume` 和 `python scripts/validate_v2.py`。这些复现命令使用保存的模型输出，不需要真实 Key，也不算新的独立生成。
+先按 README 重建 Windows/Python 3.11 环境，再执行 `.venv/Scripts/python.exe -X utf8 finrobot_autogen/experiments/run_quant_experiment.py all --resume`、`.venv/Scripts/python.exe -X utf8 finrobot_autogen/experiments/run_generalization.py evaluate --resume` 和 `python scripts/validate_v2.py`。这些复现命令使用保存的模型输出，不需要真实 Key，也不算新的独立生成。
 
 独立风险检查工具现已在交互增强中完成。后续可选工作：扩展策略类型、进一步增加标的和时段、独立设计 LLM 样本外策略选择实验。新实验应保留现有失败记录和对照结果。仓库现为公开，组员可以直接访问和下载；推送权限仍需单独授予。
