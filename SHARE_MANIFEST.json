@@ -5865,6 +5865,16 @@
     "sha256": "44c486eefd66b37452d0ea05ed234e51a07be4150a7ee1d605457ea1d8435568"
   },
   {
+    "path": "docs/EXPERIMENTS.md",
+    "bytes": 11780,
+    "sha256": "0953416a231153ab178fde6adfdf890fc2eb899857bd0833b2d18ffe0c010c66"
+  },
+  {
+    "path": "docs/USAGE.md",
+    "bytes": 13644,
+    "sha256": "c311f6835bc8bca57f65550165cced8b117dfb59f290b288fa75758fe93a4cd5"
+  },
+  {
     "path": "ENVIRONMENT_STATUS.md",
     "bytes": 3706,
     "sha256": "9c13c51bdee7d1ac9c502559f26c39d81a09d3594d420dc07b70d284b13cce37"
@@ -6781,13 +6791,13 @@
   },
   {
     "path": "PROJECT_STATUS.md",
-    "bytes": 35350,
-    "sha256": "38c3b4068d29aae601a2f4a79715e7e1d3ae54f67e0fe9cdcbc472ad91d56891"
+    "bytes": 36297,
+    "sha256": "635c675c88e5e22748d1516cbadb9f0a5ce5d44bf7f0cc4e84cdfd60efadf700"
   },
   {
     "path": "README.md",
-    "bytes": 52884,
-    "sha256": "aaacf4d36add635c4352477a18782f55572129e8987133d931e52f4e1013f4fb"
+    "bytes": 16573,
+    "sha256": "10d88789cecec539e3ef856761d887083175a22c3c4c54f9d7ecbaa1a8f607b7"
   },
   {
     "path": "requirements-windows-py311.lock.txt",
@@ -6831,8 +6841,8 @@
   },
   {
     "path": "scripts/package_v2.py",
-    "bytes": 3374,
-    "sha256": "64fd247056dcf2e031a37e088b9556c522ba75f63a344da956bd65a9223fd2e6"
+    "bytes": 3382,
+    "sha256": "f42aeaf05d49e80456320916bd348e1635969409d26936ff63a39e0d5d833f92"
   },
   {
     "path": "scripts/validate_auto_research.py",

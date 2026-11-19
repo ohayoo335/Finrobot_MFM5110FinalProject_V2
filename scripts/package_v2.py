@@ -15,7 +15,7 @@ EXTENSIONS = {".py", ".md", ".txt", ".json", ".toml", ".yaml", ".yml", ".cmd", "
 
 def main():
     files = [p for p in ROOT.iterdir() if p.is_file() and p.name != "SHARE_MANIFEST.json" and (p.suffix in EXTENSIONS or p.name in {"LICENSE", "NOTICE", "VERSION", ".gitignore", ".gitattributes"})]
-    for folder in ("finrobot_autogen", "tests", "scripts", "data/quant_v2", "artifacts/quant_v2",
+    for folder in ("finrobot_autogen", "tests", "scripts", "docs", "data/quant_v2", "artifacts/quant_v2",
                    "data/quant_generalization", "artifacts/quant_generalization",
                    "artifacts/factor_ideation", "artifacts/stability"):
         for path in (ROOT / folder).rglob("*"):

@@ -2,6 +2,13 @@
 
 更新：2026-11-19。当前交接版本标识：`V2`，见 [VERSION](VERSION)。只包含开发与实验交接，不包含课程报告。
 
+## 最终版文档整理（2026-11-19）
+
+- 按用户要求，README 直接说明当前实现、完成情况、整体框架、安装运行、复现入口、结果与边界，去掉版本对比和首页累计修改日志。
+- 详细角色、配置、工具、DSL 与 Memory 用法统一到 [docs/USAGE.md](docs/USAGE.md)，实验设计、统计口径和新实验/在线验收命令统一到 [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md)。本文件继续保留历史过程，原开发计划只作历史参考。
+- 量化、Memory 的实现和验收结论未改变；166 项单元测试、最近完整 9 项检查时的 162 项记录、各轮真实验证分别注明，不把历史检查混为本次新实验。课程报告、网页界面与未完整验收模块的边界仍明确保留。
+- 分享脚本纳入 `docs/`，让 Git 下载与开发交接 ZIP 使用同一套说明；本次只调整文档与打包范围，不发起新的模型或行情请求。
+
 ## Memory 真实跨进程验收完成（2026-11-19）
 
 - 基于已发布整合提交 `889440c90ed39a2d711930abd7138665e4124764`。用户授权真实验收，使用独立 SQLite 数据库，未读写个人 Memory；9 个模型场景分别启动新的真实 CLI 进程，功能核对全部通过。产品代码未修改，新增 `scripts/validate_memory_online.py`，观察器补充单角色 SDK 用量记录。
@@ -34,7 +41,7 @@
 - 新增 `finrobot_autogen/finrobot/agents/memory.py` 与 `memory_tools.py`，接入 `run_agent.py` 和自动分派。默认新建本地 SQLite 会话；`--session` 按原模式/角色恢复，`--memory-db` 指定数据库，`--no-memory` 完全跳过数据库读写。固定角色恢复示例：`run_finrobot.cmd --role Quant_Analyst --session <会话ID>`。
 - `/remember TEXT`、`/recall QUERY`、`/forget ID`、`/sessions`、`/memory` 支持交互使用，也可作为单次命令在读取 API 配置前运行，无需 Key。新会话不自动引入旧会话问答；显式笔记在同一数据库共享，历史研究可按股票/关键词跨会话检索。只将完成的研究轮次纳入恢复和检索，并保留实验 ID、来源与日期等精简证据。
 - 给模型的 Memory 上下文与查询结果有长度上限；数据库保留问答原文。`/forget` 删除显式笔记并刷新后续上下文，但不抹除旧最终回答、日志或实验产物。失败或部分完成的分析不作为完成研究恢复；运行中记忆读写异常不应丢弃已生成分析。原问题继续用于路由。
-- 本地 Memory 不引入额外 LLM/embedding 请求，不训练模型或自动进化策略；旧分析不得当作实时行情，恢复实验须用原工具核验产物。设计参考官方 `AI4Finance-Foundation/FinRobot@63e1884a42ea7b729551a5424b4bd6a65af636e0` 的 `finrobot_desktop/finrobot/audit/transcript.py`、`audit/persistence.py`、`artifact/sqlite_store.py` 和 `coverage/sqlite_store.py`，按现有 AutoGen CLI 独立实现；固定版本链接与完整用法见 [README 的 Memory 说明](README.md#本地研究记忆memory)。
+- 本地 Memory 不引入额外 LLM/embedding 请求，不训练模型或自动进化策略；旧分析不得当作实时行情，恢复实验须用原工具核验产物。设计参考官方 `AI4Finance-Foundation/FinRobot@63e1884a42ea7b729551a5424b4bd6a65af636e0` 的 `finrobot_desktop/finrobot/audit/transcript.py`、`audit/persistence.py`、`artifact/sqlite_store.py` 和 `coverage/sqlite_store.py`，按现有 AutoGen CLI 独立实现；固定版本链接与完整用法见 [Memory 使用说明](docs/USAGE.md#本地研究记忆)。
 - 本轮 146 项测试已在 Python 3.11.18 / Linux 环境通过，使用本地 SQLite、模拟模型/数据边界和冻结行情，没有新增真实 API 请求。完整复验中的 8 项功能检查通过；依赖检查因精简 Linux 验证环境缺少原项目完整依赖及两个版本不匹配而未通过，依赖清单本轮未改。当前记录见 [bugfix_memory_validation.json](artifacts/quant_v2/bugfix_memory_validation.json)。下方的测试数量、在线对话与模型生成结果是各轮历史验收记录，不把旧在线结果视为 Memory 或其他新修复的在线验收。
 
 
