@@ -10,46 +10,6 @@
     "sha256": "0a715bdd285bc2e4b02407a1c396a6cdf588e013af9ced2a5cb49b845227634b"
   },
   {
-    "path": "COMPLETION_PLAN.md",
-    "bytes": 10965,
-    "sha256": "6b12a3e8dccbfab8bfe058e16ef1d2fee39f605e0a4b2292bc20ed888a8a8b5a"
-  },
-  {
-    "path": "ENVIRONMENT_STATUS.md",
-    "bytes": 3706,
-    "sha256": "9c13c51bdee7d1ac9c502559f26c39d81a09d3594d420dc07b70d284b13cce37"
-  },
-  {
-    "path": "LICENSE",
-    "bytes": 11552,
-    "sha256": "bbcb4226500b503737713f0c9a9da17efce56fa6989b9f0538071dcb60826af5"
-  },
-  {
-    "path": "NOTICE",
-    "bytes": 1304,
-    "sha256": "d1da20e9e1e8a0f3189665c4f21cf35f0eba1a8a1432f95a734db0640e289346"
-  },
-  {
-    "path": "PROJECT_STATUS.md",
-    "bytes": 27447,
-    "sha256": "7be54c258c15a29897c5ac1629a224ea07c1399de45210234368900b2ff44a9a"
-  },
-  {
-    "path": "README.md",
-    "bytes": 47978,
-    "sha256": "c3d0d65179172a63929b7f740446e3fc2523f50c169d4c675928988319e2440c"
-  },
-  {
-    "path": "TRADEMARK_POLICY.md",
-    "bytes": 1825,
-    "sha256": "28d544a54523e7119a7e4e29e17a2dd532e2c611b8f1991c591fb460dafc81f6"
-  },
-  {
-    "path": "VERSION",
-    "bytes": 3,
-    "sha256": "f710918055cf4d5d6cda12f0ad0df1ae470649f90cd7e5a919e6aa69230ce952"
-  },
-  {
     "path": "artifacts/factor_ideation/declared_design.json",
     "bytes": 1192,
     "sha256": "ed1c9146bce670ee6bc2e23f77b94a9beae8628ede954d5d37b9cba7a00080ee"
@@ -1866,8 +1826,8 @@
   },
   {
     "path": "artifacts/factor_ideation/factor_ideation_out_of_sample_7990b01f7181/comparison.png",
-    "bytes": 111554,
-    "sha256": "60f0a49127ee14e2115acbf4357d2eb5b309c3be14d440a3cf79d5f351707357"
+    "bytes": 110629,
+    "sha256": "cdfabd1c31950dc50a3526e51bca6e1a6a1dad7ff3472095054b9b50e02fe149"
   },
   {
     "path": "artifacts/factor_ideation/factor_ideation_out_of_sample_7990b01f7181/evaluation/_baselines/000001/buy_hold/equity.csv",
@@ -3667,12 +3627,12 @@
   {
     "path": "artifacts/factor_ideation/factor_ideation_out_of_sample_7990b01f7181/summary.json",
     "bytes": 86702,
-    "sha256": "8dc487a022bedd745315267da83142b8bd4dde2f4f8510eca036e57ad1dafef2"
+    "sha256": "5aa7ea41e4982da7d69290f1bd6e8a6b037716679213494989e5c9fc0b4cbb50"
   },
   {
     "path": "artifacts/factor_ideation/latest.json",
     "bytes": 176,
-    "sha256": "1456bdcf03907c486021208045c7993f6cb0f010c04b719735688b00e8b71e44"
+    "sha256": "a64710a200c00bc785ec5d06397475bf95676718ea0ae20c10da10a5ca3dc1c6"
   },
   {
     "path": "artifacts/quant_generalization/declared_design.json",
@@ -4710,6 +4670,11 @@
     "sha256": "e6af7c82956ff2a2565db49b45710d52d401a76a8af43d095eb1bf567099d16f"
   },
   {
+    "path": "artifacts/quant_v2/auto_online_validation.json",
+    "bytes": 7333,
+    "sha256": "ff07d2d5d4315a940cd0729e7f3a20a2b4a82354cf877a20f7fbaa7d14fc65f1"
+  },
+  {
     "path": "artifacts/quant_v2/bugfix_memory_validation.json",
     "bytes": 10426,
     "sha256": "4c74bc42ba5328085b526535d4b6739008b5d72295617954ddbf6550d4bd70dd"
@@ -4766,13 +4731,13 @@
   },
   {
     "path": "artifacts/quant_v2/factor_ideation_replay.txt",
-    "bytes": 1377,
-    "sha256": "cb9d773552d50216d29af1483f1f626d7170f6271982dfdcb75da1199bb8e873"
+    "bytes": 1378,
+    "sha256": "b84ed0b4025b93ad86dccf66983661d6d79d638ed57f0552e4472ebfb8a78e3d"
   },
   {
     "path": "artifacts/quant_v2/generalization.txt",
     "bytes": 1633,
-    "sha256": "a854300cafe9a745f9dc3959195c9295e21093d3a0ca4fd5beff5423c1131c4a"
+    "sha256": "24d49597c9bbea91393223a72344c8bc4731aec1c2d47893d729811bfba2753d"
   },
   {
     "path": "artifacts/quant_v2/generation_01/equity.csv",
@@ -5077,17 +5042,17 @@
   {
     "path": "artifacts/quant_v2/methodology_metrics.json",
     "bytes": 11982,
-    "sha256": "c1b865dc05e74d36b7ee158963d1f7eb3dd96e29e604d328221b8549a9745269"
+    "sha256": "c8215e3940e697924149491e959ebeb4425ca8cd52e52c592a5be8318bae6829"
   },
   {
     "path": "artifacts/quant_v2/methodology_metrics.md",
     "bytes": 4894,
-    "sha256": "d6f903bbbf9dbeda69bd33000c18773b8bad97dbbee3b28d2601cfa3ff23e508"
+    "sha256": "44b0c67d2973f4cb9322780b83caac0f4d5cb58a4bf4284aee60d410b1400ec0"
   },
   {
     "path": "artifacts/quant_v2/offline_replay.txt",
     "bytes": 235,
-    "sha256": "dab0c9815567fef08150e5656494a1d698d4078fe30c683f154d70cfc20df625"
+    "sha256": "04b8743e5e3ab1590618b8ebc483c9e46afd307a7d670565443ed11759483730"
   },
   {
     "path": "artifacts/quant_v2/offline_verification.json",
@@ -5105,9 +5070,14 @@
     "sha256": "5b338009381582336eeb62e017786e7778f71eacf1350fb0ef4b21ed4e5c6aa8"
   },
   {
+    "path": "artifacts/quant_v2/pr2_integration_validation.json",
+    "bytes": 3883,
+    "sha256": "75f230e3ba2ea49efe30f268cc0734ed89c5d08a403b11e75beac870e8c6a47a"
+  },
+  {
     "path": "artifacts/quant_v2/resume_pipeline.txt",
-    "bytes": 3719,
-    "sha256": "057d7c9f0a218e5a9ceda6ed51b7485c53fd20fc16dad992607b25b0d485104b"
+    "bytes": 3720,
+    "sha256": "34fcdfa72c4643a007b0d6ee587de34ce051be8e9b44b7b3762108e1c2d0f4eb"
   },
   {
     "path": "artifacts/quant_v2/share_validation.json",
@@ -5131,18 +5101,18 @@
   },
   {
     "path": "artifacts/quant_v2/stability_replay.txt",
-    "bytes": 1999,
-    "sha256": "1ef4e4065f25f213cff355e6c114eb1ecc431a490738cc6cfb79677dba24991e"
+    "bytes": 2000,
+    "sha256": "c64c56cc987ee4e0a3a1d1f16fe75d1e039dff1f6af17022fc6161c4a4a91c38"
   },
   {
     "path": "artifacts/quant_v2/unit_tests.txt",
-    "bytes": 13720,
-    "sha256": "64e2f4cf41d79c5e25c0517fa12a34beb87b9ae70cc37981a694573d2c0b11ff"
+    "bytes": 24523,
+    "sha256": "aece71bbe8c3d9664617fb644793e6b1368d2bc106b4d785b724e6c69768a8ca"
   },
   {
     "path": "artifacts/quant_v2/validation_summary.json",
-    "bytes": 982,
-    "sha256": "ddbb1c9b1711f6fb58774d4546cc4bb2c4ff5a068aea0310f88941b479d284a0"
+    "bytes": 984,
+    "sha256": "fece38e9c587ddc0d9e4ac2a70111f6e3a69b5396cf48741e19572286a8ada99"
   },
   {
     "path": "artifacts/stability/declared_design.json",
@@ -5152,7 +5122,7 @@
   {
     "path": "artifacts/stability/latest.json",
     "bytes": 165,
-    "sha256": "4ec97203c1d08436567ae55fb83a6ffc81f24a88d38107cfae4917cc7600b437"
+    "sha256": "2ebfe2ad80e3b83a0fe3e83d5a07d6ada2db7014dc5d3620fb6284198fd284b2"
   },
   {
     "path": "artifacts/stability/sma_generation_stability_19a54bc7dcae/000001_2021_2025/config.json",
@@ -5812,12 +5782,17 @@
   {
     "path": "artifacts/stability/sma_generation_stability_19a54bc7dcae/summary.json",
     "bytes": 1810,
-    "sha256": "9f0c6f41a59d7e8db23d94e9f7bd468b5bcef306c5a0d0a592818612bfc245a4"
+    "sha256": "11f2457c9513436e62e30e45c8286a4dd34a050c20171bd37ca04711ab00cd93"
   },
   {
     "path": "artifacts/stability/sma_generation_stability_19a54bc7dcae/verification_summary.json",
     "bytes": 1415,
     "sha256": "4d0693e94ea2b7d034d3c78d7f73da75c5e2c41f4f72950bff78140ca898eeee"
+  },
+  {
+    "path": "COMPLETION_PLAN.md",
+    "bytes": 10965,
+    "sha256": "6b12a3e8dccbfab8bfe058e16ef1d2fee39f605e0a4b2292bc20ed888a8a8b5a"
   },
   {
     "path": "constraints-windows-py311.txt",
@@ -5885,14 +5860,109 @@
     "sha256": "44c486eefd66b37452d0ea05ed234e51a07be4150a7ee1d605457ea1d8435568"
   },
   {
+    "path": "ENVIRONMENT_STATUS.md",
+    "bytes": 3706,
+    "sha256": "9c13c51bdee7d1ac9c502559f26c39d81a09d3594d420dc07b70d284b13cce37"
+  },
+  {
+    "path": "finrobot_autogen/agent_builder_demo.py",
+    "bytes": 1802,
+    "sha256": "6f271e35ecef71e8f82cedf263c07c2aba1bee116ddf5e766415c193c090d16f"
+  },
+  {
+    "path": "finrobot_autogen/config_api_keys.example.json",
+    "bytes": 59,
+    "sha256": "da48acf21d87e285c17130516670b0a10d5c9e0f83efedaeedb918b833b53315"
+  },
+  {
     "path": "finrobot_autogen/CONFIG_README.md",
     "bytes": 4302,
     "sha256": "d24a36de66a28722a81b68b48a874115fdb2fba9089534b383f327f37463600d"
   },
   {
+    "path": "finrobot_autogen/configs/save_config_forecaster.json",
+    "bytes": 14865,
+    "sha256": "c34eb2834ac7a1da263611d6bebd96f0dd0d64e7e0210e1dccb360e0fa347df0"
+  },
+  {
     "path": "finrobot_autogen/CUSZ-MFM5110-finalProject.md",
     "bytes": 19199,
     "sha256": "cae8937ec386cbf3d8479038f50ea58d176845b7fafbacc9ff6dc2ba2490b13f"
+  },
+  {
+    "path": "finrobot_autogen/experiments/execute_dialogue_strategy.py",
+    "bytes": 1403,
+    "sha256": "9a0e2ef48ee34ef8ffe505439b07cb91824ee3cbf4ba53102af7e0c936fc522d"
+  },
+  {
+    "path": "finrobot_autogen/experiments/execute_generated_strategy.py",
+    "bytes": 1091,
+    "sha256": "f1cbc062389168f7a916a0a276d48c723da82d6a7aed3017be8c1598c9194cd2"
+  },
+  {
+    "path": "finrobot_autogen/experiments/execute_stability_strategy.py",
+    "bytes": 2153,
+    "sha256": "cbcf5e457cd9720bab6599372995473e30336ec8c0cd11a87aec332fe1efc78d"
+  },
+  {
+    "path": "finrobot_autogen/experiments/factor_ideation_config.json",
+    "bytes": 1114,
+    "sha256": "2d9b0b40d6735e1212ff9550c14f0581ccd15755bc1702ff0f42b5fb133defff"
+  },
+  {
+    "path": "finrobot_autogen/experiments/generalization_config.json",
+    "bytes": 734,
+    "sha256": "80b9e711de5a66dd66a38f6a5f8a847bb026291bd9831a874226900e11012b21"
+  },
+  {
+    "path": "finrobot_autogen/experiments/investment_group.py",
+    "bytes": 11739,
+    "sha256": "cb4cc98ee5ef54a998ab8bf00af042e5b7c3aea87853db8bbc98f2f1d4d44cc5"
+  },
+  {
+    "path": "finrobot_autogen/experiments/multi_factor_agents.py",
+    "bytes": 4399,
+    "sha256": "79dcc1f07f2fbc9d4c7824799d4045d6a39479d899178ad5d1f1508c8dd46459"
+  },
+  {
+    "path": "finrobot_autogen/experiments/portfolio_optimization.py",
+    "bytes": 6956,
+    "sha256": "b66a3203bd41cae5e7d744c438a6ec292bfcf73e678d5e393e9cdddd0690480d"
+  },
+  {
+    "path": "finrobot_autogen/experiments/quant_v2_config.json",
+    "bytes": 1291,
+    "sha256": "d71157a87d716c5b14e4849c3633d1cf52ccbe0c3cdd017b2f301e1f9cef4d76"
+  },
+  {
+    "path": "finrobot_autogen/experiments/quantitative_investment_group_config.json",
+    "bytes": 3803,
+    "sha256": "d83e0953eedab91215cadd80c2cad051965af0ab15d474f24c96f59e71fd2fb8"
+  },
+  {
+    "path": "finrobot_autogen/experiments/run_factor_ideation.py",
+    "bytes": 23725,
+    "sha256": "41cefd4a3b60eab85577a27c24defa2025ff99eff2cb939abc09934d7c86a457"
+  },
+  {
+    "path": "finrobot_autogen/experiments/run_generalization.py",
+    "bytes": 12477,
+    "sha256": "88ed416594ff6c16668e0b4957943874efd629609afbe29d7e40c5f313e5ceda"
+  },
+  {
+    "path": "finrobot_autogen/experiments/run_quant_experiment.py",
+    "bytes": 16606,
+    "sha256": "b2a47c1069e6040c243493c6ded91e70e99e75c1eaab789d7ff904c11ea2391d"
+  },
+  {
+    "path": "finrobot_autogen/experiments/run_stability.py",
+    "bytes": 18733,
+    "sha256": "c5680cb061669f9951ab01938704cb0ead6934c11512100b02e1c90d82c452d6"
+  },
+  {
+    "path": "finrobot_autogen/experiments/stability_config.json",
+    "bytes": 1132,
+    "sha256": "e5987f730a122eeecf3cb2500f2fbd2670bbccee34b1a4a5f5d6d16f60ca36d7"
   },
   {
     "path": "finrobot_autogen/FinNLP/.gitignore",
@@ -5903,16 +5973,6 @@
     "path": "finrobot_autogen/FinNLP/.gitmodules",
     "bytes": 192,
     "sha256": "a1e8d401aaa8b7db3042db1b5d5c17e7df07f2e81d07fd0837c264b72d6651ea"
-  },
-  {
-    "path": "finrobot_autogen/FinNLP/LICENSE",
-    "bytes": 1083,
-    "sha256": "2a3183a35138275582698c16b07e9b33992d822434bb4c7728673c6204bb1848"
-  },
-  {
-    "path": "finrobot_autogen/FinNLP/README.md",
-    "bytes": 19597,
-    "sha256": "bb71e5f23861cc697a0fa087ea882b012dbc4291655f2edd707c92172a78851f"
   },
   {
     "path": "finrobot_autogen/FinNLP/demo/README.md",
@@ -6155,11 +6215,6 @@
     "sha256": "fe6f60d0c0a1585521d8a774d38bf5013e3e9672e330a10ed1cdc3ce3e78c928"
   },
   {
-    "path": "finrobot_autogen/FinNLP/finnlp/data_sources/sec_filings/README.md",
-    "bytes": 1019,
-    "sha256": "b49418386bcb778ddc3456c14c2cec5a601ef88dce63ff7864f3a6a19d03c2c2"
-  },
-  {
     "path": "finrobot_autogen/FinNLP/finnlp/data_sources/sec_filings/__init__.py",
     "bytes": 69,
     "sha256": "f96a522ab019b49f394b05911046a67fe00f800f3bfd91e4d864b5864db44dd1"
@@ -6198,6 +6253,11 @@
     "path": "finrobot_autogen/FinNLP/finnlp/data_sources/sec_filings/prepline_sec_filings/sections.py",
     "bytes": 6178,
     "sha256": "dd1185ee604755fa38eea7debdec512ff636f3a893c51e8471bdb1b069cf019e"
+  },
+  {
+    "path": "finrobot_autogen/FinNLP/finnlp/data_sources/sec_filings/README.md",
+    "bytes": 1019,
+    "sha256": "b49418386bcb778ddc3456c14c2cec5a601ef88dce63ff7864f3a6a19d03c2c2"
   },
   {
     "path": "finrobot_autogen/FinNLP/finnlp/data_sources/sec_filings/sec_filings.py",
@@ -6345,9 +6405,19 @@
     "sha256": "7a5f6515f0c34e1c488af7e4df95e94eb191f0dc69fdf66b1ea87ddca40aa6a6"
   },
   {
+    "path": "finrobot_autogen/FinNLP/LICENSE",
+    "bytes": 1083,
+    "sha256": "2a3183a35138275582698c16b07e9b33992d822434bb4c7728673c6204bb1848"
+  },
+  {
     "path": "finrobot_autogen/FinNLP/markdowns/codes.md",
     "bytes": 1608,
     "sha256": "77f3639d0e514f3cdbfe8818c6c477033a56303d8872a403f9d73c5442375029"
+  },
+  {
+    "path": "finrobot_autogen/FinNLP/README.md",
+    "bytes": 19597,
+    "sha256": "bb71e5f23861cc697a0fa087ea882b012dbc4291655f2edd707c92172a78851f"
   },
   {
     "path": "finrobot_autogen/FinNLP/requirements.txt",
@@ -6395,101 +6465,6 @@
     "sha256": "21d6c92141687fe336b663c6602ee24ae28738eb3ae4ccc3333a5e91439e39e9"
   },
   {
-    "path": "finrobot_autogen/OAI_CONFIG_LIST.example.json",
-    "bytes": 189,
-    "sha256": "bcea27b3ab52c1b60790d0e3c5bcd1fc3cf33297322cf20cefbf6659f20b4b26"
-  },
-  {
-    "path": "finrobot_autogen/agent_builder_demo.py",
-    "bytes": 1802,
-    "sha256": "6f271e35ecef71e8f82cedf263c07c2aba1bee116ddf5e766415c193c090d16f"
-  },
-  {
-    "path": "finrobot_autogen/config_api_keys.example.json",
-    "bytes": 59,
-    "sha256": "da48acf21d87e285c17130516670b0a10d5c9e0f83efedaeedb918b833b53315"
-  },
-  {
-    "path": "finrobot_autogen/configs/save_config_forecaster.json",
-    "bytes": 14865,
-    "sha256": "c34eb2834ac7a1da263611d6bebd96f0dd0d64e7e0210e1dccb360e0fa347df0"
-  },
-  {
-    "path": "finrobot_autogen/experiments/execute_dialogue_strategy.py",
-    "bytes": 1403,
-    "sha256": "9a0e2ef48ee34ef8ffe505439b07cb91824ee3cbf4ba53102af7e0c936fc522d"
-  },
-  {
-    "path": "finrobot_autogen/experiments/execute_generated_strategy.py",
-    "bytes": 1091,
-    "sha256": "f1cbc062389168f7a916a0a276d48c723da82d6a7aed3017be8c1598c9194cd2"
-  },
-  {
-    "path": "finrobot_autogen/experiments/execute_stability_strategy.py",
-    "bytes": 2153,
-    "sha256": "cbcf5e457cd9720bab6599372995473e30336ec8c0cd11a87aec332fe1efc78d"
-  },
-  {
-    "path": "finrobot_autogen/experiments/factor_ideation_config.json",
-    "bytes": 1114,
-    "sha256": "2d9b0b40d6735e1212ff9550c14f0581ccd15755bc1702ff0f42b5fb133defff"
-  },
-  {
-    "path": "finrobot_autogen/experiments/generalization_config.json",
-    "bytes": 734,
-    "sha256": "80b9e711de5a66dd66a38f6a5f8a847bb026291bd9831a874226900e11012b21"
-  },
-  {
-    "path": "finrobot_autogen/experiments/investment_group.py",
-    "bytes": 11739,
-    "sha256": "cb4cc98ee5ef54a998ab8bf00af042e5b7c3aea87853db8bbc98f2f1d4d44cc5"
-  },
-  {
-    "path": "finrobot_autogen/experiments/multi_factor_agents.py",
-    "bytes": 4399,
-    "sha256": "79dcc1f07f2fbc9d4c7824799d4045d6a39479d899178ad5d1f1508c8dd46459"
-  },
-  {
-    "path": "finrobot_autogen/experiments/portfolio_optimization.py",
-    "bytes": 6956,
-    "sha256": "b66a3203bd41cae5e7d744c438a6ec292bfcf73e678d5e393e9cdddd0690480d"
-  },
-  {
-    "path": "finrobot_autogen/experiments/quant_v2_config.json",
-    "bytes": 1291,
-    "sha256": "d71157a87d716c5b14e4849c3633d1cf52ccbe0c3cdd017b2f301e1f9cef4d76"
-  },
-  {
-    "path": "finrobot_autogen/experiments/quantitative_investment_group_config.json",
-    "bytes": 3803,
-    "sha256": "d83e0953eedab91215cadd80c2cad051965af0ab15d474f24c96f59e71fd2fb8"
-  },
-  {
-    "path": "finrobot_autogen/experiments/run_factor_ideation.py",
-    "bytes": 23725,
-    "sha256": "41cefd4a3b60eab85577a27c24defa2025ff99eff2cb939abc09934d7c86a457"
-  },
-  {
-    "path": "finrobot_autogen/experiments/run_generalization.py",
-    "bytes": 12477,
-    "sha256": "88ed416594ff6c16668e0b4957943874efd629609afbe29d7e40c5f313e5ceda"
-  },
-  {
-    "path": "finrobot_autogen/experiments/run_quant_experiment.py",
-    "bytes": 16606,
-    "sha256": "b2a47c1069e6040c243493c6ded91e70e99e75c1eaab789d7ff904c11ea2391d"
-  },
-  {
-    "path": "finrobot_autogen/experiments/run_stability.py",
-    "bytes": 18733,
-    "sha256": "c5680cb061669f9951ab01938704cb0ead6934c11512100b02e1c90d82c452d6"
-  },
-  {
-    "path": "finrobot_autogen/experiments/stability_config.json",
-    "bytes": 1132,
-    "sha256": "e5987f730a122eeecf3cb2500f2fbd2670bbccee34b1a4a5f5d6d16f60ca36d7"
-  },
-  {
     "path": "finrobot_autogen/finrobot/__init__.py",
     "bytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -6506,13 +6481,13 @@
   },
   {
     "path": "finrobot_autogen/finrobot/agents/memory.py",
-    "bytes": 15388,
-    "sha256": "96cf56b9af8d2d117881abc9e96aa3fa3a14b24209fd7dbef6bb9c4a144c8d5a"
+    "bytes": 19768,
+    "sha256": "c2e1ccfc3c29eeb323b828b66ea5e69aee27fe93ae74a190015ab1f9d6ac316f"
   },
   {
     "path": "finrobot_autogen/finrobot/agents/memory_tools.py",
-    "bytes": 3259,
-    "sha256": "10f655beef15db778176b9e677d2b3cd53f8e7fd1dfe21d33c09b20970026b15"
+    "bytes": 4053,
+    "sha256": "6f8ef271eb262fcf8195294cfdab8379b96a1908e92157d53791e957d08a1c42"
   },
   {
     "path": "finrobot_autogen/finrobot/agents/prompts.py",
@@ -6521,8 +6496,8 @@
   },
   {
     "path": "finrobot_autogen/finrobot/agents/research_router.py",
-    "bytes": 13043,
-    "sha256": "1b7d0cf57edaffe9230daf9b55062d8a761236073afd1457ae9bb9264bb718a8"
+    "bytes": 14976,
+    "sha256": "a259aaf71147b4ad611323c749dd41ffec3ddaa4d5bd0c3859e89ce420106df2"
   },
   {
     "path": "finrobot_autogen/finrobot/agents/utils.py",
@@ -6605,14 +6580,14 @@
     "sha256": "531a5da95b865ba3bbb8510003cca0fe4a34221b39f9f7bce3ddb9ed6345e3b6"
   },
   {
-    "path": "finrobot_autogen/finrobot/data_source/filings_src/secData.py",
-    "bytes": 4001,
-    "sha256": "8f4a5de7c081a166b3b595a1df27977f0e1238eb7fc1388c7aaf9a7b303ac506"
-  },
-  {
     "path": "finrobot_autogen/finrobot/data_source/filings_src/sec_filings.py",
     "bytes": 8302,
     "sha256": "cd4393c3540e81793a5cd8985260a0eb64902914bb46586cb58d48d92c53c091"
+  },
+  {
+    "path": "finrobot_autogen/finrobot/data_source/filings_src/secData.py",
+    "bytes": 4001,
+    "sha256": "8f4a5de7c081a166b3b595a1df27977f0e1238eb7fc1388c7aaf9a7b303ac506"
   },
   {
     "path": "finrobot_autogen/finrobot/data_source/filings_src/section_names.py",
@@ -6770,6 +6745,11 @@
     "sha256": "7d8b84b7d40c8a32f5854899d35f52bf25027efdf1957245799f4140aebec477"
   },
   {
+    "path": "finrobot_autogen/OAI_CONFIG_LIST.example.json",
+    "bytes": 189,
+    "sha256": "bcea27b3ab52c1b60790d0e3c5bcd1fc3cf33297322cf20cefbf6659f20b4b26"
+  },
+  {
     "path": "finrobot_autogen/requirements.txt",
     "bytes": 586,
     "sha256": "21857956f513017c8dd8157fab9ce8d0fca52accb1af6c3fa0c7d1c30932cd7f"
@@ -6783,6 +6763,26 @@
     "path": "finrobot_autogen/test_module.py",
     "bytes": 3159,
     "sha256": "4579b4278e392de796b238aa98ddb4f44aa3a92a5265f06ee97a0fafa381d98f"
+  },
+  {
+    "path": "LICENSE",
+    "bytes": 11552,
+    "sha256": "bbcb4226500b503737713f0c9a9da17efce56fa6989b9f0538071dcb60826af5"
+  },
+  {
+    "path": "NOTICE",
+    "bytes": 1304,
+    "sha256": "d1da20e9e1e8a0f3189665c4f21cf35f0eba1a8a1432f95a734db0640e289346"
+  },
+  {
+    "path": "PROJECT_STATUS.md",
+    "bytes": 32176,
+    "sha256": "85f0828753efd52190d7b15ad0fb1b11c8182b6815e17c3deb4a43984dfa362b"
+  },
+  {
+    "path": "README.md",
+    "bytes": 50794,
+    "sha256": "3b34ffa9c2f7e202f3a64ecb0aebd2b30847b4250e1614740fed9aa8e1192928"
   },
   {
     "path": "requirements-windows-py311.lock.txt",
@@ -6815,6 +6815,11 @@
     "sha256": "97b4d1e2d17bdec58653a39fe0484a0105a1b94b94f7dbdad2059041d7b15721"
   },
   {
+    "path": "scripts/_auto_validation_observer.py",
+    "bytes": 3216,
+    "sha256": "cd436ee6b1ca4335b67b7d7366db502f93979de4df3afd23331fc4ac69822347"
+  },
+  {
     "path": "scripts/evaluate_agent_methodology.py",
     "bytes": 1675,
     "sha256": "82249239a459cafcb060edfed2d0869d33e62a07217bd1e1e29c3cae81e1e824"
@@ -6823,6 +6828,11 @@
     "path": "scripts/package_v2.py",
     "bytes": 3374,
     "sha256": "64fd247056dcf2e031a37e088b9556c522ba75f63a344da956bd65a9223fd2e6"
+  },
+  {
+    "path": "scripts/validate_auto_research.py",
+    "bytes": 18809,
+    "sha256": "9ae3536c75c618b9b45bfe4441d4cb74f53028b794f52455e5ebbf77a8084df4"
   },
   {
     "path": "scripts/validate_quant_dialogue.py",
@@ -6838,6 +6848,11 @@
     "path": "setup.py",
     "bytes": 1870,
     "sha256": "0bf351a2d06d03782bba110c75ffa6f9458216303419bc455e6e23c5cf70b30c"
+  },
+  {
+    "path": "tests/test_auto_validation.py",
+    "bytes": 1995,
+    "sha256": "453cd15817a8fef2d50e3f650d711c3bd3d677c2c1174e87e6f80820dbd65f8e"
   },
   {
     "path": "tests/test_cli_image_tools.py",
@@ -6880,6 +6895,11 @@
     "sha256": "1fbd3428823b6394673873748a33415074be14c866132e45d403e26f60779f8a"
   },
   {
+    "path": "tests/test_memory_rules.py",
+    "bytes": 8062,
+    "sha256": "06400337454b7c4baf030caba6b4dad13a29f9f8254536d199f1becf4e9862ca"
+  },
+  {
     "path": "tests/test_memory_store.py",
     "bytes": 12470,
     "sha256": "f8d1053919f4cd96639e69c4f184357cb3d10034b3a97097e0137816740a64ec"
@@ -6906,8 +6926,8 @@
   },
   {
     "path": "tests/test_research_router.py",
-    "bytes": 5706,
-    "sha256": "c1d6efa22f74d2b3c020fe7fa3ee1e25192f1fb0f36c66f7ee8a28c35aa505c8"
+    "bytes": 6967,
+    "sha256": "9f9532ed435a994deafb329c3b404a86dcaf04c90885736e89f36984a8871de2"
   },
   {
     "path": "tests/test_rule_backtest.py",
@@ -6918,5 +6938,15 @@
     "path": "tests/test_stability.py",
     "bytes": 4684,
     "sha256": "e472250bb9b19a33061078a4712e1dfe3900c53a713c9b31fe60b2617e99d446"
+  },
+  {
+    "path": "TRADEMARK_POLICY.md",
+    "bytes": 1825,
+    "sha256": "28d544a54523e7119a7e4e29e17a2dd532e2c611b8f1991c591fb460dafc81f6"
+  },
+  {
+    "path": "VERSION",
+    "bytes": 3,
+    "sha256": "f710918055cf4d5d6cda12f0ad0df1ae470649f90cd7e5a919e6aa69230ce952"
   }
 ]

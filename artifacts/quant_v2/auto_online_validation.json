@@ -1,0 +1,226 @@
+{
+  "ok": true,
+  "validated_at": "2026-11-19T10:50:44.253549+00:00",
+  "base_commit": "83e48a63a5a3f3639d273391d61569d5c434ae0e",
+  "model": "deepseek-flash",
+  "entrypoint": "python finrobot_autogen/run_agent.py --mode auto",
+  "validation_method": "Real CLI process and real service responses. A read-only Python profile observer records tool-used bars, returns and SDK usage. Independent formulas and ledger replay audit the recorded data; no mock market/model responses.",
+  "accepted_run_id": "20261119T104307855667",
+  "planned_turns": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "scenario": "factor",
+      "ok": true,
+      "roles": [
+        "A_Share_Factor_Researcher"
+      ],
+      "tool_calls": [
+        "get_a_share_factors"
+      ],
+      "numeric_evidence": {
+        "symbol": "000651",
+        "data_date": "2024-12-31",
+        "rows": 122,
+        "data_sha256": "4d5828d0965a78a6c9021b45ed8b3646739f84d9b793c1da0a9508aa70ce0f96",
+        "source": {
+          "source": "akshare_tencent",
+          "endpoint": "stock_zh_a_hist_tx",
+          "adjust": "qfq",
+          "volume_unit": "lots (100 shares)"
+        },
+        "independent_numeric_checks": 8
+      }
+    },
+    {
+      "turn": 2,
+      "scenario": "ideation",
+      "ok": true,
+      "roles": [
+        "A_Share_Factor_Ideator"
+      ],
+      "tool_calls": [],
+      "rule_json": {
+        "name": "momentum_volume_confirmation_20_5_20",
+        "signal": {
+          "all": [
+            {
+              "indicator": "momentum",
+              "window": 20,
+              "operator": ">",
+              "value": 0
+            },
+            {
+              "indicator": "average_volume_ratio",
+              "short_window": 5,
+              "long_window": 20,
+              "operator": ">",
+              "value": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "scenario": "rule_backtest",
+      "ok": true,
+      "roles": [
+        "A_Share_Factor_Ideator"
+      ],
+      "tool_calls": [
+        "backtest_a_share_strategy"
+      ],
+      "symbol": "000651",
+      "start": "2023-01-01",
+      "end": "2024-12-31",
+      "data_sha256": "96a39f0d6135a95df208fb17422a2e57855de7739d878f4ab54547a3027ecf8b",
+      "source": {
+        "source": "akshare_tencent",
+        "endpoint": "stock_zh_a_hist_tx",
+        "adjust": "qfq",
+        "volume_unit": "lots (100 shares)"
+      },
+      "rule_preserved": true,
+      "ledger_audit_ok": true,
+      "strategy_total_return": 0.12393160373900147,
+      "buy_hold_total_return": 0.6207205201199999,
+      "csi300_available": true,
+      "independent_numeric_checks": 8
+    },
+    {
+      "turn": 4,
+      "scenario": "switch_symbol",
+      "ok": true,
+      "roles": [
+        "A_Share_Factor_Ideator"
+      ],
+      "tool_calls": [
+        "backtest_a_share_strategy"
+      ],
+      "symbol": "600031",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "data_sha256": "32dcec4cbabef8e1375508fee73263b2de45ca908fb410593162681f66ff7cad",
+      "source": {
+        "source": "akshare_tencent",
+        "endpoint": "stock_zh_a_hist_tx",
+        "adjust": "qfq",
+        "volume_unit": "lots (100 shares)"
+      },
+      "rule_preserved": true,
+      "ledger_audit_ok": true,
+      "strategy_total_return": 0.13222784672750065,
+      "buy_hold_total_return": 0.3147138807500003,
+      "csi300_available": true,
+      "independent_numeric_checks": 8
+    },
+    {
+      "turn": 5,
+      "scenario": "multiple_roles",
+      "ok": true,
+      "roles": [
+        "A_Share_Factor_Researcher",
+        "Quant_Analyst"
+      ],
+      "tool_calls": [
+        "get_a_share_factors",
+        "get_data_summary",
+        "read_backtest_result",
+        "read_backtest_result"
+      ],
+      "numeric_evidence": {
+        "symbol": "000651",
+        "data_date": "2024-12-31",
+        "rows": 122,
+        "data_sha256": "4d5828d0965a78a6c9021b45ed8b3646739f84d9b793c1da0a9508aa70ce0f96",
+        "source": {
+          "source": "akshare_tencent",
+          "endpoint": "stock_zh_a_hist_tx",
+          "adjust": "qfq",
+          "volume_unit": "lots (100 shares)"
+        },
+        "independent_numeric_checks": 8
+      },
+      "synthesis_checks": 4
+    }
+  ],
+  "numeric_checks_passed": 36,
+  "console_noise_found": [],
+  "all_saved_answers_visible_once": true,
+  "cli_exit_code": 0,
+  "accepted_run_tokens": {
+    "prompt_tokens": 27811,
+    "completion_tokens": 2476,
+    "total_tokens": 30287
+  },
+  "accepted_run_model_responses": 12,
+  "total_tokens_including_failed_and_targeted_runs": {
+    "prompt_tokens": 82838,
+    "completion_tokens": 6516,
+    "total_tokens": 89354
+  },
+  "total_model_responses_recorded": 37,
+  "retained_failed_runs": [
+    {
+      "run_id": "20261119T103138763344",
+      "completed_turns": 4,
+      "failure_turn": 4,
+      "category": "cross_turn_route_lost_rule_context",
+      "tokens": {
+        "prompt_tokens": 12794,
+        "completion_tokens": 1159,
+        "total_tokens": 13953
+      }
+    },
+    {
+      "run_id": "20261119T103358180609",
+      "completed_turns": 5,
+      "failure_turn": 5,
+      "category": "specialists_crossed_task_boundaries_and_synthesis_returned_nulls",
+      "tokens": {
+        "prompt_tokens": 34690,
+        "completion_tokens": 2151,
+        "total_tokens": 36841
+      }
+    }
+  ],
+  "targeted_recheck": {
+    "run_id": "20261119T104030754275",
+    "planned_turns": [
+      5
+    ],
+    "ok": true,
+    "tokens": {
+      "prompt_tokens": 7543,
+      "completion_tokens": 730,
+      "total_tokens": 8273
+    }
+  },
+  "validated_product_files": {
+    "finrobot_autogen/run_agent.py": "ad226ba612b02fa381a75eab29390a7e17ec588ee3ab7508aa5b56e1e1745ab2",
+    "finrobot_autogen/finrobot/agents/research_router.py": "8d407b4cb935b43037b5dcb6ed75ffd443def0089da5f7612c88ddb9da037fa5",
+    "finrobot_autogen/finrobot/functional/factors.py": "95859c1c324c78cc2cf390e4b9a34cba100774efbfa2470f1be15cc8e36d5da1",
+    "finrobot_autogen/finrobot/functional/momentum_backtest.py": "162ec19cab3c2ec08cdb9bb4c3990ae222486f397b6c0f2fe4e71651b69ac7cb"
+  },
+  "not_covered": [
+    "Complete fundamental/news/PDF workflows",
+    "New automatic-mode Python-code generation in this run"
+  ],
+  "privacy": "Raw conversations, consoles, SDK usage events and exact market snapshots stay under the git-ignored artifacts/agent_chats/auto_validation directory. This file contains sanitized checks and aggregate figures only.",
+  "interpretation": "Finite-scenario end-to-end validation. Passing checks establish rule/parameter preservation and numerical fidelity for these cases, not investment alpha or universal routing accuracy.",
+  "offline_regression": {
+    "ok": true,
+    "unit_tests": 102,
+    "checks": 9,
+    "seconds": 130.696
+  },
+  "source_state": "At validation time, fixes were exercised in the local worktree on base_commit; product file hashes identify the tested code. The fixes and sanitized evidence are included in the repository update.",
+  "auditor_source_sha256": "32e3e73017aace92f90cf4fd27475ac78d29a7a4a4fec8d29630982fa9675abb"
+}

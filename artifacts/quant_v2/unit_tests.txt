@@ -1,8 +1,20 @@
+
+>>>>>>>> EXECUTING FUNCTION recall_research...
+
+>>>>>>>> EXECUTING FUNCTION recall_research...
 [AkShareUtils] 东方财富行情获取失败（test provider fallback），回退到腾讯行情。
-{"ok": false, "design": "fixture", "limits": "fixture", "model": "deepseek-flash", "repeats_per_case": 3, "cases": 1, "attempts": 3, "passed": 1, "pass_rate": 0.3333, "json_valid_rate": 0.3333, "rule_consistency_rate": 0.3333, "prefix_causality_rate": 0.3333, "trusted_engine_equality_rate": 0.3333, "rate_denominator": "all planned attempts, including failed and missing attempts", "conditional_check_rates": {"rule_consistency_rate": 1.0, "prefix_causality_rate": 1.0, "trusted_engine_equality_rate": 1.0}, "failure_taxonomy": {"json_decode_or_schema": 1, "missing_attempt": 1}, "latency_seconds": {"count": 1, "mean": 2.0, "median": 2.0, "min": 2.0, "max": 2.0}, "scope": "Bounded generation-stability check across three fixed cases; not evidence of investment alpha.", "evaluation_time": "2026-11-19T09:42:13.245840+00:00"}
-Results: C:/Users/ohh/AppData/Local/Temp/tmpcunfdi3q/fixture_stability_af1b454892ef
-{"ok": false, "design": "fixture", "limits": "fixture", "model": "deepseek-flash", "repeats_per_case": 3, "cases": 1, "attempts": 3, "passed": 0, "pass_rate": 0.0, "json_valid_rate": 0.0, "rule_consistency_rate": 0.0, "prefix_causality_rate": 0.0, "trusted_engine_equality_rate": 0.0, "rate_denominator": "all planned attempts, including failed and missing attempts", "conditional_check_rates": {"rule_consistency_rate": null, "prefix_causality_rate": null, "trusted_engine_equality_rate": null}, "failure_taxonomy": {"missing_attempt": 3}, "latency_seconds": {"count": 0, "mean": null, "median": null, "min": null, "max": null}, "scope": "Bounded generation-stability check across three fixed cases; not evidence of investment alpha.", "evaluation_time": "2026-11-19T09:42:13.260313+00:00"}
-Results: C:/Users/ohh/AppData/Local/Temp/tmpqyz7vbzv/fixture_stability_af1b454892ef
+{"ok": false, "design": "fixture", "limits": "fixture", "model": "deepseek-flash", "repeats_per_case": 3, "cases": 1, "attempts": 3, "passed": 1, "pass_rate": 0.3333, "json_valid_rate": 0.3333, "rule_consistency_rate": 0.3333, "prefix_causality_rate": 0.3333, "trusted_engine_equality_rate": 0.3333, "rate_denominator": "all planned attempts, including failed and missing attempts", "conditional_check_rates": {"rule_consistency_rate": 1.0, "prefix_causality_rate": 1.0, "trusted_engine_equality_rate": 1.0}, "failure_taxonomy": {"json_decode_or_schema": 1, "missing_attempt": 1}, "latency_seconds": {"count": 1, "mean": 2.0, "median": 2.0, "min": 2.0, "max": 2.0}, "scope": "Bounded generation-stability check across three fixed cases; not evidence of investment alpha.", "evaluation_time": "2026-11-19T13:15:26.269334+00:00"}
+Results: C:/Users/ohh/AppData/Local/Temp/tmppl4cspf8/fixture_stability_af1b454892ef
+{"ok": false, "design": "fixture", "limits": "fixture", "model": "deepseek-flash", "repeats_per_case": 3, "cases": 1, "attempts": 3, "passed": 0, "pass_rate": 0.0, "json_valid_rate": 0.0, "rule_consistency_rate": 0.0, "prefix_causality_rate": 0.0, "trusted_engine_equality_rate": 0.0, "rate_denominator": "all planned attempts, including failed and missing attempts", "conditional_check_rates": {"rule_consistency_rate": null, "prefix_causality_rate": null, "trusted_engine_equality_rate": null}, "failure_taxonomy": {"missing_attempt": 3}, "latency_seconds": {"count": 0, "mean": null, "median": null, "min": null, "max": null}, "scope": "Bounded generation-stability check across three fixed cases; not evidence of investment alpha.", "evaluation_time": "2026-11-19T13:15:26.286981+00:00"}
+Results: C:/Users/ohh/AppData/Local/Temp/tmpcd7pgqes/fixture_stability_af1b454892ef
+test_json_final_answer_with_code_fence (test_auto_validation.AutoValidationTests.test_json_final_answer_with_code_fence) ... ok
+test_rule_order_and_numeric_threshold_type_do_not_change_logic (test_auto_validation.AutoValidationTests.test_rule_order_and_numeric_threshold_type_do_not_change_logic) ... ok
+test_tool_calls_accept_empty_final_message_fields (test_auto_validation.AutoValidationTests.test_tool_calls_accept_empty_final_message_fields) ... ok
+test_wrong_scale_nan_and_missing_value_fail (test_auto_validation.AutoValidationTests.test_wrong_scale_nan_and_missing_value_fail) ... ok
+test_cell_error_is_returned (test_cli_image_tools.CliImageTests.test_cell_error_is_returned) ... ok
+test_missing_image_does_not_report_success (test_cli_image_tools.CliImageTests.test_missing_image_does_not_report_success) ... ok
+test_notebook_display_uses_path_as_data (test_cli_image_tools.CliImageTests.test_notebook_display_uses_path_as_data) ... ok
+test_plain_python_preserves_cells_and_returns_image_path (test_cli_image_tools.CliImageTests.test_plain_python_preserves_cells_and_returns_image_path) ... ok
 test_default_console_only_shows_analysis (test_console_output.ConsoleTests.test_default_console_only_shows_analysis) ... ok
 test_do_not_repeat_user_question_or_old_answer (test_console_output.ConsoleTests.test_do_not_repeat_user_question_or_old_answer) ... ok
 test_explicit_json_answer_preserved (test_console_output.ConsoleTests.test_explicit_json_answer_preserved) ... ok
@@ -13,7 +25,10 @@ test_tool_summary_is_limited_to_current_turn (test_console_output.ConsoleTests.t
 test_unfinished_tool_run_has_no_fake_final (test_console_output.ConsoleTests.test_unfinished_tool_run_has_no_fake_final) ... ok
 test_boolean_and_composition (test_factor_dsl.FactorDslTests.test_boolean_and_composition) ... ok
 test_division_by_zero_is_not_inf (test_factor_dsl.FactorDslTests.test_division_by_zero_is_not_inf) ... ok
+test_formal_window_rejects_insufficient_nested_history (test_factor_dsl.FactorDslTests.test_formal_window_rejects_insufficient_nested_history) ... ok
+test_missing_values_cannot_be_hidden_by_comparison_or_not (test_factor_dsl.FactorDslTests.test_missing_values_cannot_be_hidden_by_comparison_or_not) ... ok
 test_momentum_signal_is_binary_and_causal (test_factor_dsl.FactorDslTests.test_momentum_signal_is_binary_and_causal) ... ok
+test_nested_windows_accumulate_history (test_factor_dsl.FactorDslTests.test_nested_windows_accumulate_history) ... ok
 test_rejects_attributes_and_imports (test_factor_dsl.FactorDslTests.test_rejects_attributes_and_imports) ... ok
 test_rejects_excessive_expression_complexity (test_factor_dsl.FactorDslTests.test_rejects_excessive_expression_complexity) ... ok
 test_rejects_multiply_by_zero (test_factor_dsl.FactorDslTests.test_rejects_multiply_by_zero) ... ok
@@ -22,19 +37,34 @@ test_rejects_plain_series (test_factor_dsl.FactorDslTests.test_rejects_plain_ser
 test_rejects_power_before_evaluation (test_factor_dsl.FactorDslTests.test_rejects_power_before_evaluation) ... ok
 test_rejects_unbounded_numeric_literals (test_factor_dsl.FactorDslTests.test_rejects_unbounded_numeric_literals) ... ok
 test_rejects_unknown_name_and_window (test_factor_dsl.FactorDslTests.test_rejects_unknown_name_and_window) ... ok
+test_returns_do_not_forward_fill_missing_prices (test_factor_dsl.FactorDslTests.test_returns_do_not_forward_fill_missing_prices) ... ok
 test_scalar_not_keeps_boolean_meaning (test_factor_dsl.FactorDslTests.test_scalar_not_keeps_boolean_meaning) ... ok
 test_series_not_inverts_each_comparison (test_factor_dsl.FactorDslTests.test_series_not_inverts_each_comparison) ... ok
 test_where_and_scalar_functions (test_factor_dsl.FactorDslTests.test_where_and_scalar_functions) ... ok
+test_where_may_explicitly_handle_undefined_arithmetic (test_factor_dsl.FactorDslTests.test_where_may_explicitly_handle_undefined_arithmetic) ... ok
 test_zscore_and_rank_are_trailing (test_factor_dsl.FactorDslTests.test_zscore_and_rank_are_trailing) ... ok
 test_constant_after_warmup_is_rejected (test_factor_dsl.IdeationValidationTests.test_constant_after_warmup_is_rejected) ... ok
 test_constant_signal_is_rejected (test_factor_dsl.IdeationValidationTests.test_constant_signal_is_rejected) ... ok
 test_validate_ideas_keeps_valid_and_reports_invalid (test_factor_dsl.IdeationValidationTests.test_validate_ideas_keeps_valid_and_reports_invalid) ... ok
 test_complete_run_counts_duplicate_and_oos_cases (test_factor_ideation.FactorExperimentTests.test_complete_run_counts_duplicate_and_oos_cases) ... ok
+test_ema_uses_the_same_snapshot_prefix_for_different_warmup_floors (test_factor_ideation.FactorExperimentTests.test_ema_uses_the_same_snapshot_prefix_for_different_warmup_floors) ... ok
 test_missing_attempt_is_in_generation_denominator (test_factor_ideation.FactorExperimentTests.test_missing_attempt_is_in_generation_denominator) ... ok
+test_nested_factor_rejects_an_incomplete_snapshot (test_factor_ideation.FactorExperimentTests.test_nested_factor_rejects_an_incomplete_snapshot) ... ok
 test_no_attempts_write_failed_summary (test_factor_ideation.FactorExperimentTests.test_no_attempts_write_failed_summary) ... ok
 test_overlapping_windows_are_rejected (test_factor_ideation.FactorExperimentTests.test_overlapping_windows_are_rejected) ... ok
 test_saved_validation_is_rechecked (test_factor_ideation.FactorExperimentTests.test_saved_validation_is_rechecked) ... ok
 test_updated_prompt_replays_the_frozen_run (test_factor_ideation.FactorExperimentTests.test_updated_prompt_replays_the_frozen_run) ... ok
+test_nested_volatility_replays_all_observable_history_for_000651 (test_factor_ideation.SavedFactorHistoryTests.test_nested_volatility_replays_all_observable_history_for_000651)
+The old 60-bar slice skipped a profitable January 2024 position. ... ok
+test_future_only_values_are_not_used_for_a_historical_query (test_historical_report_data.HistoricalBVPSTests.test_future_only_values_are_not_used_for_a_historical_query) ... ok
+test_latest_period_at_or_before_target_is_selected (test_historical_report_data.HistoricalBVPSTests.test_latest_period_at_or_before_target_is_selected) ... ok
+test_unparseable_report_periods_are_missing (test_historical_report_data.HistoricalBVPSTests.test_unparseable_report_periods_are_missing) ... ok
+test_all_three_statements_apply_the_cutoff (test_historical_report_data.HistoricalFinancialMetricsTests.test_all_three_statements_apply_the_cutoff) ... ok
+test_cutoff_uses_disclosure_date_before_selecting_recent_years (test_historical_report_data.HistoricalFinancialMetricsTests.test_cutoff_uses_disclosure_date_before_selecting_recent_years) ... ok
+test_no_eligible_report_fails_instead_of_returning_future_years (test_historical_report_data.HistoricalFinancialMetricsTests.test_no_eligible_report_fails_instead_of_returning_future_years) ... ok
+test_pdf_financial_table_is_filtered_by_its_filing_date (test_historical_report_data.HistoricalFinancialMetricsTests.test_pdf_financial_table_is_filtered_by_its_filing_date) ... ok
+test_unknown_disclosure_dates_are_not_assumed_available (test_historical_report_data.HistoricalFinancialMetricsTests.test_unknown_disclosure_dates_are_not_assumed_available) ... ok
+test_portfolio_specialists_can_register_and_execute_the_retrieval_tool (test_legacy_rag_registration.LegacyRAGRegistrationTests.test_portfolio_specialists_can_register_and_execute_the_retrieval_tool) ... ok
 test_latest_ignores_newer_summary (test_market_data_tools.AnnualReportTests.test_latest_ignores_newer_summary) ... ok
 test_missing_disclosure_date_does_not_claim_latest (test_market_data_tools.AnnualReportTests.test_missing_disclosure_date_does_not_claim_latest) ... ok
 test_report_year_is_not_disclosure_year (test_market_data_tools.AnnualReportTests.test_report_year_is_not_disclosure_year) ... ok
@@ -45,6 +75,44 @@ test_future_data_does_not_change_prefix (test_market_data_tools.PriceFactorTests
 test_missing_volume_and_incomplete_prices_are_not_filled (test_market_data_tools.PriceFactorTests.test_missing_volume_and_incomplete_prices_are_not_filled) ... ok
 test_momentum_volatility_and_volume_formulas (test_market_data_tools.PriceFactorTests.test_momentum_volatility_and_volume_formulas) ... ok
 test_public_tool_excludes_bars_after_cutoff (test_market_data_tools.PriceFactorTests.test_public_tool_excludes_bars_after_cutoff) ... ok
+test_auto_restores_role_and_verified_experiment_after_restart (test_memory_cli.MemoryCliTests.test_auto_restores_role_and_verified_experiment_after_restart) ... ok
+test_failed_expert_is_not_a_successful_memory (test_memory_cli.MemoryCliTests.test_failed_expert_is_not_a_successful_memory) ... ok
+test_forget_removes_retrieved_notes_from_live_autogen_tool_history (test_memory_cli.MemoryCliTests.test_forget_removes_retrieved_notes_from_live_autogen_tool_history) ... ok
+test_local_commands_work_without_api_configuration (test_memory_cli.MemoryCliTests.test_local_commands_work_without_api_configuration) ... ok
+test_new_session_does_not_inject_other_conversations (test_memory_cli.MemoryCliTests.test_new_session_does_not_inject_other_conversations) ... ok
+test_no_memory_does_not_initialize_or_read_database (test_memory_cli.MemoryCliTests.test_no_memory_does_not_initialize_or_read_database) ... ok
+test_notes_do_not_change_question_routing (test_memory_cli.MemoryCliTests.test_notes_do_not_change_question_routing) ... ok
+test_read_error_does_not_discard_current_request (test_memory_cli.MemoryCliTests.test_read_error_does_not_discard_current_request) ... ok
+test_recall_tool_bounds_previews_without_changing_stored_text (test_memory_cli.MemoryCliTests.test_recall_tool_bounds_previews_without_changing_stored_text) ... ok
+test_recall_tool_is_registered_and_reads_previous_research (test_memory_cli.MemoryCliTests.test_recall_tool_is_registered_and_reads_previous_research) ... ok
+test_relative_database_path_is_independent_of_launcher_working_directory (test_memory_cli.MemoryCliTests.test_relative_database_path_is_independent_of_launcher_working_directory) ... ok
+test_single_resumes_without_replaying_tool_messages_and_forgets_notes (test_memory_cli.MemoryCliTests.test_single_resumes_without_replaying_tool_messages_and_forgets_notes) ... ok
+test_single_session_resume_hint_includes_the_saved_role (test_memory_cli.MemoryCliTests.test_single_session_resume_hint_includes_the_saved_role) ... ok
+test_single_unfinished_answer_stays_visible_but_is_not_recalled (test_memory_cli.MemoryCliTests.test_single_unfinished_answer_stays_visible_but_is_not_recalled) ... ok
+test_write_error_preserves_answer_and_reports_failure (test_memory_cli.MemoryCliTests.test_write_error_preserves_answer_and_reports_failure) ... ok
+test_encoded_rule_argument_is_preserved (test_memory_rules.MemoryRuleTests.test_encoded_rule_argument_is_preserved) ... ok
+test_invalid_rule_is_not_promoted_to_executable_memory (test_memory_rules.MemoryRuleTests.test_invalid_rule_is_not_promoted_to_executable_memory) ... ok
+test_legacy_database_is_upgraded_and_old_answer_rule_is_recovered (test_memory_rules.MemoryRuleTests.test_legacy_database_is_upgraded_and_old_answer_rule_is_recovered) ... ok
+test_nested_rule_is_not_flattened_or_truncated (test_memory_rules.MemoryRuleTests.test_nested_rule_is_not_flattened_or_truncated) ... ok
+test_oversized_json_answer_preview_does_not_leak_a_partial_rule (test_memory_rules.MemoryRuleTests.test_oversized_json_answer_preview_does_not_leak_a_partial_rule) ... ok
+test_oversized_rule_is_explicitly_omitted_without_a_partial_object (test_memory_rules.MemoryRuleTests.test_oversized_rule_is_explicitly_omitted_without_a_partial_object) ... ok
+test_partial_turn_rule_does_not_become_completed_research (test_memory_rules.MemoryRuleTests.test_partial_turn_rule_does_not_become_completed_research) ... ok
+test_restarted_auto_session_passes_the_complete_rule_to_the_model_boundary (test_memory_rules.MemoryRuleTests.test_restarted_auto_session_passes_the_complete_rule_to_the_model_boundary) ... ok
+test_rule_after_long_answer_survives_restart_and_model_recall (test_memory_rules.MemoryRuleTests.test_rule_after_long_answer_survives_restart_and_model_recall) ... ok
+test_tool_rule_is_saved_without_relying_on_answer_text (test_memory_rules.MemoryRuleTests.test_tool_rule_is_saved_without_relying_on_answer_text) ... ok
+test_evidence_and_context_budgets_keep_complete_experiment_identifiers (test_memory_store.ResearchMemoryTests.test_evidence_and_context_budgets_keep_complete_experiment_identifiers) ... ok
+test_explicit_notes_are_verbatim_and_deletions_persist (test_memory_store.ResearchMemoryTests.test_explicit_notes_are_verbatim_and_deletions_persist) ... ok
+test_failed_and_partial_turns_are_recorded_but_not_recalled_as_completed (test_memory_store.ResearchMemoryTests.test_failed_and_partial_turns_are_recorded_but_not_recalled_as_completed) ... ok
+test_fresh_process_restores_saved_session_and_notes (test_memory_store.ResearchMemoryTests.test_fresh_process_restores_saved_session_and_notes) ... ok
+test_incompatible_resume_does_not_modify_existing_session (test_memory_store.ResearchMemoryTests.test_incompatible_resume_does_not_modify_existing_session) ... ok
+test_many_tool_results_remain_bounded_without_partial_ids (test_memory_store.ResearchMemoryTests.test_many_tool_results_remain_bounded_without_partial_ids) ... ok
+test_new_session_isolated_but_explicit_notes_are_shared (test_memory_store.ResearchMemoryTests.test_new_session_isolated_but_explicit_notes_are_shared) ... ok
+test_only_tool_results_supply_evidence_and_credentials_are_not_stored (test_memory_store.ResearchMemoryTests.test_only_tool_results_supply_evidence_and_credentials_are_not_stored) ... ok
+test_plain_report_path_and_legacy_function_results_are_retained (test_memory_store.ResearchMemoryTests.test_plain_report_path_and_legacy_function_results_are_retained) ... ok
+test_save_turn_and_session_metadata_are_one_transaction (test_memory_store.ResearchMemoryTests.test_save_turn_and_session_metadata_are_one_transaction) ... ok
+test_sql_and_wildcard_characters_are_literal_data (test_memory_store.ResearchMemoryTests.test_sql_and_wildcard_characters_are_literal_data) ... ok
+test_stock_recall_does_not_expand_to_every_matching_generic_keyword (test_memory_store.ResearchMemoryTests.test_stock_recall_does_not_expand_to_every_matching_generic_keyword) ... ok
+test_verbatim_text_survives_reopen_and_recent_order (test_memory_store.ResearchMemoryTests.test_verbatim_text_survives_reopen_and_recent_order) ... ok
 test_build_metrics (test_methodology.MethodologyTests.test_build_metrics) ... ok
 test_markdown_keeps_honest_labels (test_methodology.MethodologyTests.test_markdown_keeps_honest_labels) ... ok
 test_compare_and_independent_risk (test_quant_dialogue.DialogueTests.test_compare_and_independent_risk) ... ok
@@ -76,7 +144,9 @@ test_unauthorized_signal_rejected (test_quant_v2.QuantTests.test_unauthorized_si
 test_warmup_excluded_from_performance_and_trades (test_quant_v2.QuantTests.test_warmup_excluded_from_performance_and_trades) ... ok
 test_window_has_only_past_context (test_quant_v2.QuantTests.test_window_has_only_past_context) ... ok
 test_window_rejects_insufficient_warmup (test_quant_v2.QuantTests.test_window_rejects_insufficient_warmup) ... ok
+test_price_range_uses_low_min_and_high_max_for_both_markets (test_report_price_range.ReportPriceRangeTests.test_price_range_uses_low_min_and_high_max_for_both_markets) ... ok
 test_default_auto_output_is_quiet_and_records_the_turn (test_research_router.AutomaticConsoleTests.test_default_auto_output_is_quiet_and_records_the_turn) ... ok
+test_factor_and_fixed_snapshot_tools_are_scoped_without_mutating_roles (test_research_router.AutomaticReplyTests.test_factor_and_fixed_snapshot_tools_are_scoped_without_mutating_roles) ... ok
 test_incomplete_tool_reply_is_not_an_answer (test_research_router.AutomaticReplyTests.test_incomplete_tool_reply_is_not_an_answer) ... ok
 test_named_assistant_final_reply_is_accepted (test_research_router.AutomaticReplyTests.test_named_assistant_final_reply_is_accepted) ... ok
 test_one_failed_role_does_not_hide_other_evidence (test_research_router.AutomaticReplyTests.test_one_failed_role_does_not_hide_other_evidence) ... ok
@@ -87,6 +157,7 @@ test_financial_and_news_intents_can_combine (test_research_router.RoutingTests.t
 test_fixed_momentum_uses_factor_researcher (test_research_router.RoutingTests.test_fixed_momentum_uses_factor_researcher) ... ok
 test_parameterized_sma_uses_quant_role (test_research_router.RoutingTests.test_parameterized_sma_uses_quant_role) ... ok
 test_readme_custom_rule_uses_rule_tool_role (test_research_router.RoutingTests.test_readme_custom_rule_uses_rule_tool_role) ... ok
+test_switch_symbol_keeps_rule_despite_numeric_format_keywords (test_research_router.RoutingTests.test_switch_symbol_keeps_rule_despite_numeric_format_keywords) ... ok
 test_excessive_nesting_is_rejected (test_rule_backtest.RuleBacktestTests.test_excessive_nesting_is_rejected) ... ok
 test_invalid_json_never_fetches_data (test_rule_backtest.RuleBacktestTests.test_invalid_json_never_fetches_data) ... ok
 test_invalid_windows_fields_and_execution_are_rejected (test_rule_backtest.RuleBacktestTests.test_invalid_windows_fields_and_execution_are_rejected) ... ok
@@ -101,6 +172,6 @@ test_prepare_case_rejects_changed_config (test_stability.StabilityTests.test_pre
 test_rate_and_latency (test_stability.StabilityTests.test_rate_and_latency) ... ok
 
 ----------------------------------------------------------------------
-Ran 96 tests in 2.611s
+Ran 162 tests in 6.502s
 
 OK

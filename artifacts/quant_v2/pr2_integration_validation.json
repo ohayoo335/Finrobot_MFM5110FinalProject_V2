@@ -1,0 +1,109 @@
+{
+  "ok": true,
+  "validated_at": "2026-11-19T13:20:43.296750+00:00",
+  "pr": 2,
+  "pr_head": "764ffcb9898825cac14e949ac8dc6c98083ef78a",
+  "previous_main": "9a323798a5dc42f82b3f81ebcfadd71ea4bbf7fb",
+  "memory_rule_fix_commit": "c1fe42839fe2ddfe8d68f0af8fe74088cb7b8d91",
+  "environment": {
+    "os": "Windows",
+    "python": "3.11.16",
+    "dependencies": "Existing dedicated environment installed from requirements-windows-py311.lock.txt; dependency check passed."
+  },
+  "unit_tests": 162,
+  "complete_offline_checks": {
+    "ok": true,
+    "python_environment": "v2_publish_verify_20261119",
+    "api_calls_requested": 0,
+    "checks": [
+      {
+        "check": "unit_tests",
+        "ok": true,
+        "seconds": 14.553,
+        "tests": 162
+      },
+      {
+        "check": "dependency_check",
+        "ok": true,
+        "seconds": 1.368
+      },
+      {
+        "check": "dialogue_offline",
+        "ok": true,
+        "seconds": 7.815
+      },
+      {
+        "check": "offline_replay",
+        "ok": true,
+        "seconds": 21.255
+      },
+      {
+        "check": "resume_pipeline",
+        "ok": true,
+        "seconds": 8.774
+      },
+      {
+        "check": "generalization",
+        "ok": true,
+        "seconds": 11.077
+      },
+      {
+        "check": "stability_replay",
+        "ok": true,
+        "seconds": 57.88
+      },
+      {
+        "check": "factor_ideation_replay",
+        "ok": true,
+        "seconds": 15.95
+      },
+      {
+        "check": "methodology",
+        "ok": true,
+        "seconds": 0.332
+      }
+    ]
+  },
+  "total_seconds": 139.004,
+  "targeted_rule_tests_rechecked": 10,
+  "fresh_process_rule_restore": true,
+  "legacy_database_upgrade": true,
+  "rules_are_omitted_whole_when_over_budget": true,
+  "conflict_resolution": "Both documentation histories retained; corrected factor results and methodology recomputed; final share manifest regenerated.",
+  "original_model_evidence_files_unchanged": 141,
+  "new_model_requests": 0,
+  "new_market_data_requests": 0,
+  "factor_replay": {
+    "comparisons": 27,
+    "wins_vs_buy_hold": 0,
+    "wins_vs_sma": 12,
+    "corrected_signal": "close > sma(close, 60) and std(ret(close, 1), 20) < sma(std(ret(close, 1), 20), 60)",
+    "required_history": {
+      "required_observations": 79,
+      "used_observations": 79,
+      "start": "2023-09-04",
+      "ema_initialization": null
+    },
+    "000651_oos_return_before": 0.06493381358850092,
+    "000651_oos_return_after": 0.10636990016150194,
+    "000001_ideation_return_before": -0.21119331759349935,
+    "000001_ideation_return_after": -0.22619493569649884
+  },
+  "online_scope": "No new online model/market validation. The five-turn live record belongs to the earlier no-memory automatic mode; new memory restore was checked with synthetic data and a mocked model boundary.",
+  "product_files_sha256": {
+    "finrobot_autogen/finrobot/agents/memory.py": "c2e1ccfc3c29eeb323b828b66ea5e69aee27fe93ae74a190015ab1f9d6ac316f",
+    "finrobot_autogen/finrobot/agents/memory_tools.py": "6f8ef271eb262fcf8195294cfdab8379b96a1908e92157d53791e957d08a1c42",
+    "finrobot_autogen/finrobot/agents/research_router.py": "a259aaf71147b4ad611323c749dd41ffec3ddaa4d5bd0c3859e89ce420106df2",
+    "finrobot_autogen/run_agent.py": "6cbd0c1e996a1f5413743f30ae1879b12da30fc1cd82588ceca48e790b55573a",
+    "finrobot_autogen/finrobot/functional/factor_dsl.py": "313c8285927cd77f7ae64190aa661aa9edf5021bbc17b5395a9433f854113d49"
+  },
+  "archive_verification": {
+    "manifest_files_verified": 1390,
+    "unpacked_tests_passed": 162,
+    "dependency_check_ok": true,
+    "memory_cli_without_key_ok": true,
+    "source_config_data_files_matched": 214,
+    "personal_memory_chats_or_keys_included": false,
+    "comparison_plot_visually_checked": true
+  }
+}

@@ -45,8 +45,24 @@ class RoutingTests(unittest.TestCase):
         self.assertEqual(router.route_research("回测刚才那个因子", (router.FACTOR_IDEA_ROLE,)),
                          (router.FACTOR_IDEA_ROLE,))
 
+    def test_switch_symbol_keeps_rule_despite_numeric_format_keywords(self):
+        question = "换成600031，2025年继续用刚才同一个规则重新计算，收益率和波动率保留原始小数"
+        self.assertEqual(router.route_research(question, (router.FACTOR_IDEA_ROLE,)),
+                         (router.FACTOR_IDEA_ROLE,))
+
 
 class AutomaticReplyTests(unittest.TestCase):
+    def test_factor_and_fixed_snapshot_tools_are_scoped_without_mutating_roles(self):
+        question = "计算000651截至2024年的价量因子，并读取原V2固定实验的人工SMA已保存指标"
+        original = list(router.library["A_Share_Factor_Researcher"]["toolkits"])
+        factor = router.scoped_specialist("A_Share_Factor_Researcher", question)
+        quant = router.scoped_specialist("Quant_Analyst", question)
+        self.assertEqual([tool.__name__ for tool in factor["toolkits"]], ["get_a_share_factors"])
+        self.assertEqual({tool.__name__ for tool in quant["toolkits"]}, {"get_data_summary", "read_backtest_result"})
+        self.assertEqual(router.library["A_Share_Factor_Researcher"]["toolkits"], original)
+        rerun = router.scoped_specialist("Quant_Analyst", "重跑固定V2实验")
+        self.assertIn("backtest_reference", {tool.__name__ for tool in rerun["toolkits"]})
+
     def test_one_failed_role_does_not_hide_other_evidence(self):
         research = router.AutoResearch({})
         with patch.object(research, "_reply", side_effect=[{"answer": "财务证据"},

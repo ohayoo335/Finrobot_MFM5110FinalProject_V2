@@ -2,6 +2,8 @@
 import json
 from contextlib import closing
 import sqlite3
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -44,6 +46,14 @@ class MemoryRuleTests(unittest.TestCase):
         self.assertEqual(context["recent_turns"][0]["rules"][0]["source"], "assistant_answer")
         recalled = recall_context(restored, "000651", 1)
         self.assertEqual(recalled["turns"][0]["rules"][0]["rule"], rule())
+        script = (
+            "import json,sys; from finrobot.agents.memory import ResearchMemory; "
+            "m=ResearchMemory(sys.argv[1],session_id=sys.argv[2]); "
+            "print(json.dumps(m.context('continue')))"
+        )
+        child = subprocess.run([sys.executable, "-c", script, str(self.path), self.memory.session_id],
+                               capture_output=True, text=True, encoding="utf-8", timeout=30, check=True)
+        self.assertEqual(json.loads(child.stdout)["recent_turns"][0]["rules"][0]["rule"], rule())
 
     def test_tool_rule_is_saved_without_relying_on_answer_text(self):
         self.save("策略已完成，详细逻辑另见报告。", tool_result(rule()))

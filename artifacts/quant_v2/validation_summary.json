@@ -6,48 +6,48 @@
     {
       "check": "unit_tests",
       "ok": true,
-      "seconds": 9.148,
-      "tests": 96
+      "seconds": 14.553,
+      "tests": 162
     },
     {
       "check": "dependency_check",
       "ok": true,
-      "seconds": 1.437
+      "seconds": 1.368
     },
     {
       "check": "dialogue_offline",
       "ok": true,
-      "seconds": 6.397
+      "seconds": 7.815
     },
     {
       "check": "offline_replay",
       "ok": true,
-      "seconds": 17.732
+      "seconds": 21.255
     },
     {
       "check": "resume_pipeline",
       "ok": true,
-      "seconds": 7.511
+      "seconds": 8.774
     },
     {
       "check": "generalization",
       "ok": true,
-      "seconds": 9.65
+      "seconds": 11.077
     },
     {
       "check": "stability_replay",
       "ok": true,
-      "seconds": 45.198
+      "seconds": 57.88
     },
     {
       "check": "factor_ideation_replay",
       "ok": true,
-      "seconds": 11.225
+      "seconds": 15.95
     },
     {
       "check": "methodology",
       "ok": true,
-      "seconds": 0.299
+      "seconds": 0.332
     }
   ]
 }
